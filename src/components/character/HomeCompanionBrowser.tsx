@@ -42,10 +42,10 @@ export function HomeCompanionBrowser({ characters: initial }: { characters: Char
           <img src="/ug-hero-portrait.webp" alt="Portrait illustration of an AI companion" />
         </div>
         <div className="ug-hero-content">
-          <div className="ug-hero-eyebrow"><span className="ug-mini-heart">♥</span> YOUR WORLD. YOUR STORY.</div>
+          <div className="ug-hero-eyebrow"><span className="ug-mini-heart">♥</span> Your companion. Your imagination.</div>
           <img className="ug-hero-logo" src="/ug-lips-logo.svg" alt="" width="108" height="85" />
           <h1>Uncensored<br /><em>Girlfriend</em></h1>
-          <p className="ug-hero-script">Your companion. Your imagination.</p>
+          
           <p className="ug-hero-description">Meet a companion who feels like your own. Chat, roleplay, share images and videos, and connect through voice — all in a world you create.</p>
           <div className="ug-hero-buttons">
             <Link className="ug-button-primary" href="/characters">Explore AI Girlfriends <ArrowRight size={18}/></Link>
