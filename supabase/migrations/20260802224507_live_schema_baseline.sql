@@ -3460,6 +3460,7 @@ CREATE TABLE public.characters (
   official             boolean                  DEFAULT false NOT NULL,
   creator_id           uuid,
   creator_username     text,
+  voice_gender        text,
   view_count           bigint                   DEFAULT 0 NOT NULL,
   favorite_count       bigint                   DEFAULT 0 NOT NULL,
   is_active            boolean                  DEFAULT true NOT NULL,
