@@ -1,3 +1,4 @@
+import { assertIndependentSupabaseUrl } from "@/lib/supabase/project";
 import { createClient } from "@supabase/supabase-js";
 
 export function getSupabaseServiceClient() {
@@ -7,6 +8,8 @@ export function getSupabaseServiceClient() {
   if (!url || !key) {
     throw new Error("Missing Supabase service env vars.");
   }
+
+  assertIndependentSupabaseUrl(url);
 
   return createClient(url, key, {
     auth: { persistSession: false }
