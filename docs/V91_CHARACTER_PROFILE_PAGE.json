@@ -1,0 +1,13 @@
+{
+  "version": "v91",
+  "base": "everbond-v90-message-alignment-pink-tags.zip",
+  "changes": [
+    "Added a simple character profile page at /character/[slug] for each character.",
+    "Profile button now opens the character profile page instead of redirecting back to chat.",
+    "Profile page uses the same character picture and description.",
+    "Moved Report off the chat page action row and into the profile page.",
+    "Save, Share, and Refresh remain on the chat page and are also included on the profile page.",
+    "No character data, pricing, homepage, discover layout, or other UI sections changed."
+  ],
+  "strict_no_other_changes": true
+}

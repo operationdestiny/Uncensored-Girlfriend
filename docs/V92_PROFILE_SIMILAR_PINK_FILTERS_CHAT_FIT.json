@@ -1,0 +1,11 @@
+{
+  "version": "v92",
+  "base": "everbond-v91-character-profile-pages.zip",
+  "changes": [
+    "Profile page: added Similar Companions beside Start Chatting.",
+    "Similar companions/character listing page: selected top category buttons use pink instead of purple.",
+    "Similar companions/character listing page: category and tag filter buttons use pink borders.",
+    "Chat page: sidebar height/image sizing tightened so the full character card and buttons are visible without scrolling."
+  ],
+  "strict_no_other_changes": true
+}

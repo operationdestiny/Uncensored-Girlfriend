@@ -1,0 +1,79 @@
+/*
+  Discover-page phone-only layout.
+  The local .mobileDiscoverPage class keeps this CSS Module valid while
+  targeting the existing global shell/header classes.
+*/
+
+.mobileDiscoverPage {
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  /*
+    Keep the full Discover control row fixed and interactive on phones.
+  */
+  :global(.v18-shell):has(.mobileDiscoverPage) :global(.v20-topbar) {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 9998 !important;
+    background: transparent !important;
+    border-bottom: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  :global(.v18-shell):has(.mobileDiscoverPage)
+    :global(.v20-topbar .v51-topbar-inner) {
+    width: 100% !important;
+    pointer-events: auto !important;
+  }
+
+  :global(.v18-shell):has(.mobileDiscoverPage)
+    :global(.v20-topbar .v51-topbar-inner > button:first-child) {
+    position: fixed !important;
+    top: 8px !important;
+    left: 8px !important;
+    margin: 0 !important;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+  }
+
+  :global(.v18-shell):has(.mobileDiscoverPage)
+    :global(.v74-top-actions),
+  :global(.v18-shell):has(.mobileDiscoverPage)
+    :global(.v74-top-actions > *) {
+    pointer-events: auto !important;
+  }
+
+  /*
+    Keep the thicker phone Discover banner exactly as it is.
+  */
+  .mobileDiscoverPage :global(.v19-hero-image) {
+    height: clamp(180px, 50vw, 220px) !important;
+    min-height: 180px !important;
+    max-height: 220px !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+  }
+
+  .mobileDiscoverPage :global(.v19-hero-image__img) {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /*
+    Phone only: pull the character category / filter / search area upward
+    so it sits close against the bottom of the enlarged Discover banner.
+  */
+  .mobileDiscoverPage > :global(section:not(.v19-hero-image)) {
+    position: relative;
+    z-index: 1;
+    margin-top: -42px !important;
+    padding-top: 0 !important;
+  }
+}

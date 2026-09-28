@@ -1,0 +1,5 @@
+{
+  "version": "v100",
+  "base": "everbond-v99-chat-page-slightly-smaller.zip",
+  "change": "Made the chat page just a hair smaller overall so more fits on screen at once, with no other changes."
+}

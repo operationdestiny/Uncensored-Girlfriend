@@ -1,0 +1,8 @@
+{
+  "status": "READY",
+  "version": "v61",
+  "changed": [
+    "src/app/pricing/page.tsx"
+  ],
+  "note": "Updated pricing page feature text only: removed '100' and plural wording from public/private character creation."
+}

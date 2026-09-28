@@ -1,0 +1,14 @@
+{
+  "version": "v88",
+  "base": "everbond-v87-chat-image-larger-pink-similar.zip",
+  "changes": [
+    "Chat page only: removed all text/overlay content from inside the character picture.",
+    "Chat page only: moved character name below the picture.",
+    "Chat page only: removed archetype line such as Protective Neighbor.",
+    "Chat page only: added pink border around bold white character name.",
+    "Chat page only: made Profile button larger beside the name with matching pink border, still smaller than the name block.",
+    "Favicon/tab icon only: replaced favicon/icon files with uploaded EverBond logo.",
+    "Website logo file was not replaced."
+  ],
+  "strict_no_other_changes": true
+}

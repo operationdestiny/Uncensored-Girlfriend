@@ -1,0 +1,11 @@
+{
+  "version": "v98",
+  "base": "everbond-v97-chat-image-no-border-fuller.zip",
+  "reference": "everbond-v91-character-profile-pages.zip",
+  "changes": [
+    "Chat page layout/sizing restored to the v91 proportions.",
+    "Left chat column, character picture sizing, image behavior, and button sizing use the v91 chat page layout.",
+    "Kept Ever Memory\u2122 removed from visible tag pills because that was a later explicit requirement."
+  ],
+  "strict_no_other_changes": true
+}

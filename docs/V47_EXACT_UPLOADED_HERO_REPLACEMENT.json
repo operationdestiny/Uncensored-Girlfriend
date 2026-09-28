@@ -1,0 +1,20 @@
+{
+  "status": "READY",
+  "version": "v47",
+  "base_zip": "everbond-v46-locked-hero-corrected-site.zip",
+  "uploaded_reference": "3359bcbe-c7a0-4f02-8a51-04dfb1ce2649.png",
+  "uploaded_reference_size": [
+    2048,
+    513
+  ],
+  "locked_hero_asset_size": [
+    2048,
+    300
+  ],
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css",
+    "package.json"
+  ],
+  "note": "Only the hero asset/display lock was updated. The site keeps the locked hero size and uses the user's uploaded artwork as the replacement."
+}

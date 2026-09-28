@@ -1,0 +1,6 @@
+-- Historical live migration marker.
+-- This migration was applied directly to the production EverBond Supabase project
+-- before the repository history was synchronized. Its final voice-finance behavior
+-- is consolidated into:
+--   20260825005408_launch_safe_retell_money_accounting.sql
+-- Keep this file so repository migration history matches production.

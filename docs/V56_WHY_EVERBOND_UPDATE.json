@@ -1,0 +1,8 @@
+{
+  "status": "READY",
+  "version": "v56",
+  "changed": [
+    "src/app/why-everbond/page.tsx"
+  ],
+  "note": "Replaced Why EverBond page content only, per user request. Removed old feature blocks and FAQ component from the page."
+}

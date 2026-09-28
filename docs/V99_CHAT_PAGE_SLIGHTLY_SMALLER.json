@@ -1,0 +1,5 @@
+{
+  "version": "v99",
+  "base": "everbond-v98-v91-chat-sizes-restored.zip",
+  "change": "Made the chat page slightly smaller overall so more fits on screen at once, with no other site-wide changes."
+}

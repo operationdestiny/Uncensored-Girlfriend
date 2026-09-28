@@ -1,0 +1,22 @@
+{
+  "status": "READY",
+  "version": "v43",
+  "base_zip": "everbond-v41-half-size-hero-replaced-site.zip",
+  "source_banner_zip": "everbond-v40-hero-2048x514-replaced-site.zip",
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css",
+    "package.json"
+  ],
+  "source_banner_size": [
+    2048,
+    514
+  ],
+  "new_hero_asset_size": [
+    2048,
+    300
+  ],
+  "display_ratio": "2048 / 300",
+  "goal": "Fill left/right width while keeping the approximate same on-page vertical height as the half-size hero.",
+  "method": "Created a new native 2048x300 hero asset. The important banner art/text was scaled proportionally, not stretched; full-width side fill was built into the asset."
+}

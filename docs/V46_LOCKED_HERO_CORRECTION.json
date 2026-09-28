@@ -1,0 +1,20 @@
+{
+  "status": "READY",
+  "version": "v46",
+  "changed_only": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css",
+    "package.json"
+  ],
+  "base_zip": "everbond-v44-hero-content-refit-site.zip",
+  "reference_banner": "0cce3139-4c1a-4833-b956-ade720c3092c.png",
+  "reference_size": [
+    2048,
+    513
+  ],
+  "locked_hero_asset_size": [
+    2048,
+    300
+  ],
+  "method": "Kept the locked 2048x300 hero size. Rebuilt the asset from the user's exact banner reference by scaling inner content proportionally and redrawing the complete border at 2048x300. No top/bottom crop of the full banner and no CSS distortion."
+}

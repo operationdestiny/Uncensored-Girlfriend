@@ -1,0 +1,328 @@
+/*
+ * EverBond installed-app-only mobile chat layout.
+ * The normal mobile website and desktop layout are unchanged.
+ */
+
+@media (max-width: 1023px) {
+  html.everbond-standalone .everbond-chat-page {
+    height: calc(100dvh - 64px);
+    min-height: 0;
+    overflow: hidden;
+    background: #000;
+  }
+
+  html.everbond-standalone .everbond-chat-page > div {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html.everbond-standalone .everbond-chat-page > div > section {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: #050506;
+  }
+
+  /*
+   * The existing mobile chat header becomes the portrait area only in
+   * the installed app. The character stays visible while the messages
+   * scroll independently below it.
+   */
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child {
+    position: relative !important;
+    display: flex !important;
+    flex: 0 0 50% !important;
+    width: 100% !important;
+    height: 50% !important;
+    min-height: 50% !important;
+    max-height: 50% !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: #000 !important;
+  }
+
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  /*
+   * object-fit: contain keeps the entire companion visible and leaves
+   * intentional black sections on the left and right of portrait images.
+   */
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > img:first-child {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #000 !important;
+  }
+
+  /*
+   * Keep the character name readable without taking space away from
+   * the portrait.
+   */
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > div {
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 2 !important;
+    padding: 30px 14px 10px !important;
+    text-align: center !important;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.78)
+    ) !important;
+  }
+
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > div
+    > h1 {
+    font-size: 1.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /*
+   * Installed app chat portrait: show only the character name.
+   * Hide the short archetype/introduction line under the name.
+   * This does not affect the opening scenario, first message, or Discover cards.
+   */
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > div
+    > p {
+    display: none !important;
+  }
+
+  /*
+   * ChatShell already has a site-wide language selector in the main
+   * EverBond top bar. Hide only its duplicate chat-header selector
+   * while running as the installed app.
+   */
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > :nth-child(2) {
+    display: none !important;
+  }
+
+  /*
+   * Lower half: messages + composer. The messages pane keeps its
+   * existing vertical scrolling, while the portrait remains in place.
+   */
+  html.everbond-standalone
+    .everbond-chat-page
+    > div
+    > section
+    > div:nth-child(2) {
+    flex: 1 1 50% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: #050506;
+  }
+}
+
+/*
+ * EverBond PHONE WEBSITE chat layout.
+ * Mirrors the installed-app character chat presentation on phones only.
+ * Explicitly excludes standalone/app mode so the finished app is untouched.
+ */
+@media (max-width: 1023px) {
+  html:not(.everbond-standalone) .everbond-chat-page {
+    height: calc(100dvh - 64px);
+    min-height: 0;
+    overflow: hidden;
+    background: #000;
+  }
+
+  html:not(.everbond-standalone) .everbond-chat-page > div {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html:not(.everbond-standalone) .everbond-chat-page > div > section {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: #050506;
+  }
+
+  /*
+   * Top half: companion portrait. Keep the entire image visible,
+   * centered against black so portrait images naturally have black sides.
+   */
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child {
+    position: relative !important;
+    display: flex !important;
+    flex: 0 0 50% !important;
+    width: 100% !important;
+    height: 50% !important;
+    min-height: 50% !important;
+    max-height: 50% !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: #000 !important;
+  }
+
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > img:first-child {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #000 !important;
+  }
+
+  /*
+   * Keep only the character name over the bottom of the picture.
+   * The short archetype/introduction line is hidden here only.
+   */
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > div {
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 2 !important;
+    padding: 30px 14px 10px !important;
+    text-align: center !important;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.78)
+    ) !important;
+  }
+
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > div
+    > h1 {
+    font-size: 1.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > button:first-child
+    > div
+    > p {
+    display: none !important;
+  }
+
+  /*
+   * Hide only the duplicate language selector inside the chat header.
+   * The regular EverBond top-bar language selector and Login/Sign Up remain.
+   */
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:first-child
+    > :nth-child(2) {
+    display: none !important;
+  }
+
+  /*
+   * Bottom half: existing messages and composer.
+   * Messages continue to scroll vertically while the portrait stays visible.
+   */
+  html:not(.everbond-standalone)
+    .everbond-chat-page
+    > div
+    > section
+    > div:nth-child(2) {
+    flex: 1 1 50% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: #050506;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "READY",
+  "version": "v66",
+  "changed": [
+    "src/app/pricing/page.tsx",
+    "public/assets/everbond-pricing-v66.png"
+  ],
+  "note": "Replaced pricing page with provided pricing artwork and added three real clickable Link overlays for Standard, Premium, and Elite unlock buttons."
+}

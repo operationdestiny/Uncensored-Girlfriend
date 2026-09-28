@@ -1,0 +1,17 @@
+{
+  "status": "READY",
+  "version": "v44",
+  "base_zip": "everbond-v43-full-width-same-height-hero-site.zip",
+  "source_full_banner_zip": "everbond-v40-hero-2048x514-replaced-site.zip",
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css",
+    "package.json"
+  ],
+  "new_hero_asset_size": [
+    2048,
+    300
+  ],
+  "method": "Recomposed left, center, and right hero sections into a native 2048x300 asset so the content is sized for the new hero height instead of being centered/shrunk.",
+  "css_display_ratio": "2048 / 300"
+}

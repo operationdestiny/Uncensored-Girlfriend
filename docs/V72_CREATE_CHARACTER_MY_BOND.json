@@ -1,0 +1,25 @@
+{
+  "status": "READY",
+  "version": "v72",
+  "changed": [
+    "src/app/create/page.tsx",
+    "src/components/create/LockedCreateForm.tsx",
+    "src/components/layout/DashboardSidebar.tsx",
+    "src/app/my-bond/page.tsx",
+    "public/assets/create-character-hero-v72.png"
+  ],
+  "rules": {
+    "created_character_section": "Public Creations",
+    "official_sections_reserved": [
+      "EverBond Girls",
+      "Anime & Fantasy",
+      "EverBond Guys"
+    ],
+    "is_official": false,
+    "voice_enabled": false,
+    "image_generation_enabled": false,
+    "gifts_enabled": true,
+    "status": "published",
+    "view_count": 0
+  }
+}

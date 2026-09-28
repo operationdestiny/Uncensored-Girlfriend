@@ -1,0 +1,22 @@
+{
+  "status": "READY",
+  "version": "v38",
+  "base_zip": "everbond-v37-thinner-hero-smaller-cards-site.zip",
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css"
+  ],
+  "old_hero_asset_size": [
+    2048,
+    514
+  ],
+  "new_hero_asset_size": [
+    2048,
+    300
+  ],
+  "vertical_crop": {
+    "top": 127,
+    "bottom": 427
+  },
+  "note": "The hero asset was replaced with a shorter native banner. Width was preserved; only vertical length was cropped. CSS now uses the new native 2048x300 ratio, so it is not stretched."
+}

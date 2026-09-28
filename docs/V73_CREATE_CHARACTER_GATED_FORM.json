@@ -1,0 +1,8 @@
+{
+  "status": "READY",
+  "version": "v73",
+  "changed": [
+    "src/components/create/LockedCreateForm.tsx"
+  ],
+  "note": "Removed user-facing rules/info box, moved form up, changed companion description to 100 characters max, added removable selected tags, and added login/signup modal on create form interactions."
+}

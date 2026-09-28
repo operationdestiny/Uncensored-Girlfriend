@@ -1,0 +1,9 @@
+{
+  "status": "READY",
+  "version": "v63",
+  "changed": [
+    "public/assets/everbond-contact-art.png",
+    "src/app/contact/page.tsx"
+  ],
+  "note": "Replaced the right-side contact image with the provided standalone artwork so the page no longer repeats the whole contact layout inside the right column."
+}

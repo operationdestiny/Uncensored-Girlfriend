@@ -1,0 +1,16 @@
+{
+  "status": "READY",
+  "version": "v40",
+  "base_zip": "everbond-v39-flat-ready-localhost-site.zip",
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css",
+    "package.json"
+  ],
+  "hero_asset_size": [
+    2048,
+    514
+  ],
+  "hero_display_ratio": "2048 / 514",
+  "note": "The hero asset is now a full 2048x514 replacement, not the 2048x300 cropped version. CSS displays the same 2048x514 ratio so the banner is not stretched or distorted."
+}

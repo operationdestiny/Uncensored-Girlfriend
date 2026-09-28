@@ -1,0 +1,8 @@
+{
+  "status": "READY",
+  "version": "v71",
+  "changed": [
+    "src/components/layout/DashboardSidebar.tsx"
+  ],
+  "note": "Removed Favorites button from the left sidebar only. No My Bond button added yet because it should appear only after login."
+}

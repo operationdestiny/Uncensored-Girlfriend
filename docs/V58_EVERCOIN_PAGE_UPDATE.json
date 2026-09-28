@@ -1,0 +1,9 @@
+{
+  "status": "READY",
+  "version": "v58",
+  "changed": [
+    "src/app/coins/page.tsx",
+    "public/assets/evercoin-chests.png"
+  ],
+  "note": "Updated Buy EverCoin page copy, coin package amounts, feature cards, and added chest image asset while keeping buttons as real clickable buttons."
+}

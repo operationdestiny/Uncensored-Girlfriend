@@ -1,0 +1,9 @@
+{
+  "status": "READY",
+  "version": "v62",
+  "changed": [
+    "src/app/contact/page.tsx",
+    "public/assets/everbond-contact-art.png"
+  ],
+  "note": "Updated Help Center/Contact page to match the provided contact artwork layout. support@everbond.ai is a clickable mailto link."
+}

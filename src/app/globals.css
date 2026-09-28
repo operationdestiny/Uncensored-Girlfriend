@@ -1,0 +1,2809 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(139, 92, 246, 0.28), transparent 38rem),
+    radial-gradient(circle at 86% 8%, rgba(244, 114, 182, 0.22), transparent 36rem),
+    #0B0B12;
+  color: #F8FAFC;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.45);
+}
+
+.bond-container {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.bond-card {
+  border: 1px solid rgba(255,255,255,0.07);
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+  box-shadow: inset 0 1px rgba(255,255,255,0.05);
+}
+
+.bond-glow {
+  box-shadow: 0 0 90px rgba(139, 92, 246, 0.18);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.bond-pink-button {
+  border: 1px solid rgba(244, 114, 182, 0.55);
+  box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.08), 0 0 20px rgba(244, 114, 182, 0.08);
+}
+
+.bond-pink-button:hover {
+  border-color: rgba(244, 114, 182, 0.85);
+  box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.18), 0 0 24px rgba(244, 114, 182, 0.14);
+}
+
+.bond-chat-input {
+  border: 1px solid rgba(244, 114, 182, 0.55);
+  box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.08), 0 0 24px rgba(244, 114, 182, 0.08);
+}
+
+
+/* V17 EverBond dashboard polish */
+.eb-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 85% 8%, rgba(236, 72, 153, 0.16), transparent 34%),
+    radial-gradient(circle at 12% 35%, rgba(139, 92, 246, 0.12), transparent 34%),
+    #050409;
+}
+
+.eb-sidebar {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)),
+    #07060c;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.eb-neon-card {
+  border: 1px solid rgba(244, 114, 182, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(244,114,182,0.08),
+    0 0 42px rgba(244,114,182,0.18),
+    inset 0 0 70px rgba(244,114,182,0.04);
+}
+
+.eb-tag-red {
+  border-color: rgba(248,113,113,0.45);
+  background: rgba(127,29,29,0.35);
+  color: #fecaca;
+}
+
+.eb-tag-gold {
+  border-color: rgba(251,191,36,0.45);
+  background: rgba(120,53,15,0.35);
+  color: #fde68a;
+}
+
+.eb-tag-purple {
+  border-color: rgba(168,85,247,0.45);
+  background: rgba(88,28,135,0.35);
+  color: #ddd6fe;
+}
+
+.eb-tag-pink {
+  border-color: rgba(244,114,182,0.45);
+  background: rgba(131,24,67,0.35);
+  color: #fbcfe8;
+}
+
+.eb-card-hover {
+  box-shadow: 0 18px 50px rgba(0,0,0,0.3);
+}
+
+.eb-main-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(244,114,182,0.55) rgba(255,255,255,0.05);
+}
+
+
+/* FINAL USABLE EVERBOND DASHBOARD LOCK */
+.eb-final-shell {
+  min-height: 100vh;
+  background: #050505;
+  color: #ffffff;
+}
+
+.eb-final-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  display: none;
+  height: 100vh;
+  width: 250px;
+  flex-direction: column;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255,255,255,0.10);
+  background: #07070b;
+  padding: 20px 12px;
+}
+
+@media (min-width: 1024px) {
+  .eb-final-sidebar {
+    display: flex;
+  }
+}
+
+.eb-final-main {
+  min-height: 100vh;
+  background: #050505;
+}
+
+@media (min-width: 1024px) {
+  .eb-final-main {
+    margin-left: 250px;
+  }
+}
+
+.eb-final-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: 64px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(16px);
+}
+
+.eb-final-infinity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  line-height: 1;
+  color: #ff5ba9;
+  text-shadow:
+    0 0 8px rgba(255,91,169,0.95),
+    0 0 26px rgba(255,91,169,0.72);
+}
+
+.eb-final-infinity::before {
+  content: "∞";
+  transform: scaleX(1.25);
+}
+
+.eb-final-hero {
+  position: relative;
+  height: 177px;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(244,114,182,0.52);
+  background:
+    radial-gradient(circle at 88% 51%, rgba(244,114,182,0.24), transparent 22%),
+    linear-gradient(112deg, #050505 0%, #050505 30%, #10040d 49%, #210816 69%, #050505 100%);
+  box-shadow:
+    0 0 0 1px rgba(244,114,182,0.06),
+    0 0 28px rgba(244,114,182,0.20),
+    inset 0 0 52px rgba(244,114,182,0.04);
+}
+
+.eb-final-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33%;
+  width: 1px;
+  background: rgba(244,114,182,0.24);
+  transform: skewX(-13deg);
+}
+
+.eb-final-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 63%;
+  width: 1px;
+  background: rgba(244,114,182,0.24);
+  transform: skewX(-13deg);
+}
+
+.eb-final-gold-coin {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 28%, #fff5b9, #ffd45f 28%, #f3a316 62%, #925100 100%);
+  border: 1px solid rgba(255,224,130,0.95);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.58), 0 0 28px rgba(251,191,36,0.42);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 28px;
+}
+
+.eb-final-gold-coin::before {
+  content: "∞";
+  transform: scaleX(1.18);
+}
+
+.eb-final-pink-stack {
+  position: relative;
+  width: 148px;
+  height: 132px;
+}
+
+.eb-final-pink-stack .coin {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #ffd8eb, #ff79b8 33%, #d22d76 68%, #761140 100%);
+  border: 1px solid rgba(255,190,222,0.86);
+  box-shadow: inset 0 0 17px rgba(255,255,255,0.38), 0 0 28px rgba(244,114,182,0.55);
+}
+
+.eb-final-pink-stack .coin::after {
+  content: "∞";
+  position: absolute;
+  inset: 21%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.94);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 900;
+  transform: scaleX(1.12);
+}
+
+.eb-final-pink-stack .coin-1 { width: 88px; height: 88px; right: 8px; bottom: 10px; z-index: 3; }
+.eb-final-pink-stack .coin-2 { width: 76px; height: 76px; right: 28px; bottom: 51px; z-index: 2; opacity: .94; }
+.eb-final-pink-stack .coin-3 { width: 70px; height: 70px; right: 12px; bottom: 83px; z-index: 1; opacity: .78; }
+.eb-final-pink-stack .base {
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  width: 128px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(244,114,182,0.52), transparent 70%);
+  filter: blur(1px);
+}
+
+.eb-final-card {
+  overflow: hidden;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,0.13);
+  background: #111116;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.eb-final-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(244,114,182,0.68);
+  box-shadow: 0 16px 44px rgba(236,72,153,0.14);
+}
+
+.eb-final-card-image-wrap {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  background: #0d0d11;
+}
+
+.eb-final-card-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center 26%;
+}
+
+.eb-tag-red {
+  border-color: rgba(248,113,113,0.48);
+  background: rgba(127,29,29,0.32);
+  color: #fecaca;
+}
+
+.eb-tag-gold {
+  border-color: rgba(251,191,36,0.48);
+  background: rgba(120,53,15,0.32);
+  color: #fde68a;
+}
+
+.eb-tag-purple {
+  border-color: rgba(168,85,247,0.48);
+  background: rgba(88,28,135,0.34);
+  color: #ddd6fe;
+}
+
+.eb-tag-pink {
+  border-color: rgba(244,114,182,0.48);
+  background: rgba(131,24,67,0.34);
+  color: #fbcfe8;
+}
+
+
+/* GOOD SCREENSHOT BUILD — hard locked visual target */
+:root {
+  --eb-black: #050506;
+  --eb-panel: #0d0d11;
+  --eb-card: #111116;
+  --eb-pink: #ff5ca8;
+  --eb-pink2: #f04493;
+  --eb-gold: #ffc12e;
+}
+
+html, body {
+  background: #050506 !important;
+}
+
+.good-shell {
+  min-height: 100vh;
+  background: #050506;
+  color: #fff;
+}
+
+.good-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 50;
+  width: 230px;
+  height: 100vh;
+  background: #07070b;
+  border-right: 1px solid rgba(255,255,255,.11);
+  padding: 22px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.good-main {
+  margin-left: 230px;
+  min-height: 100vh;
+  background: #050506;
+}
+
+.good-topbar {
+  height: 56px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  background: #050506;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.good-infinity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--eb-pink);
+  text-shadow: 0 0 9px rgba(255,92,168,.95), 0 0 28px rgba(255,92,168,.72);
+}
+
+.good-infinity::before {
+  content: "∞";
+  transform: scaleX(1.25);
+}
+
+.good-sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 13px;
+  padding: 12px 14px;
+  color: #b9bbc7;
+  font-weight: 650;
+  font-size: 14px;
+  transition: .16s ease;
+}
+
+.good-sidebar-link.active {
+  color: #fff;
+  background: rgba(255,92,168,.11);
+  border: 1px solid rgba(255,92,168,.75);
+  box-shadow: 0 0 22px rgba(255,92,168,.16);
+}
+
+.good-sidebar-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,.04);
+}
+
+.good-pill {
+  border: 1px solid rgba(255,92,168,.56);
+  background: rgba(255,255,255,.035);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 0 18px rgba(255,92,168,.06);
+}
+
+.good-hero {
+  height: 182px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255,92,168,.46);
+  background:
+    radial-gradient(circle at 86% 51%, rgba(255,92,168,.24), transparent 20%),
+    radial-gradient(circle at 4% 5%, rgba(255,92,168,.18), transparent 10%),
+    linear-gradient(112deg, #050506 0%, #050506 31%, #0e040b 48%, #220717 68%, #050506 100%);
+  box-shadow: 0 0 30px rgba(255,92,168,.17), inset 0 0 70px rgba(255,92,168,.035);
+}
+
+.good-hero:before,
+.good-hero:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,92,168,.22);
+  transform: skewX(-13deg);
+}
+
+.good-hero:before { left: 32.4%; }
+.good-hero:after { left: 63.2%; }
+
+.good-gold-coin {
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 28%, #fff4b9 0%, #ffd766 27%, #f4a715 61%, #8f5100 100%);
+  border: 1px solid rgba(255,222,128,.95);
+  box-shadow: inset 0 0 16px rgba(255,255,255,.58), 0 0 29px rgba(255,193,46,.4);
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  font-weight: 900;
+}
+
+.good-gold-coin:before { content: "∞"; transform: scaleX(1.15); }
+
+.good-coin-stack {
+  position: relative;
+  width: 150px;
+  height: 130px;
+}
+
+.good-coin-stack .coin {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #ffd8ec, #ff78b8 33%, #d22b75 68%, #761141 100%);
+  border: 1px solid rgba(255,190,222,.86);
+  box-shadow: inset 0 0 17px rgba(255,255,255,.39), 0 0 28px rgba(255,92,168,.55);
+}
+
+.good-coin-stack .coin:after {
+  content: "∞";
+  position: absolute;
+  inset: 21%;
+  border: 2px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  color: rgba(255,255,255,.94);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scaleX(1.12);
+}
+
+.good-coin-stack .c1 { width: 88px; height: 88px; right: 8px; bottom: 10px; z-index: 3; }
+.good-coin-stack .c2 { width: 76px; height: 76px; right: 29px; bottom: 51px; z-index: 2; opacity: .93; }
+.good-coin-stack .c3 { width: 70px; height: 70px; right: 12px; bottom: 83px; z-index: 1; opacity: .77; }
+.good-coin-stack .base {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 130px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,92,168,.52), transparent 70%);
+  filter: blur(1px);
+}
+
+.good-card {
+  background: #111116;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 13px;
+  overflow: hidden;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.good-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,92,168,.68);
+  box-shadow: 0 16px 44px rgba(236,72,153,.14);
+}
+
+.good-card-img-wrap {
+  height: 185px;
+  position: relative;
+  overflow: hidden;
+  background: #0b0b0e;
+}
+
+.good-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.good-tag-red { border-color: rgba(248,113,113,.48); background: rgba(127,29,29,.32); color: #fecaca; }
+.good-tag-gold { border-color: rgba(251,191,36,.48); background: rgba(120,53,15,.32); color: #fde68a; }
+.good-tag-purple { border-color: rgba(168,85,247,.48); background: rgba(88,28,135,.34); color: #ddd6fe; }
+.good-tag-pink { border-color: rgba(244,114,182,.48); background: rgba(131,24,67,.34); color: #fbcfe8; }
+
+@media (max-width: 1023px) {
+  .good-sidebar { display: none; }
+  .good-main { margin-left: 0; }
+}
+
+@media (max-width: 1280px) {
+  .good-card-img-wrap { height: 170px; }
+}
+
+
+/* GOOD SCREENSHOT BUILD V2 — scale, taller cards, refined infinity coins */
+.good-topbar {
+  height: 54px;
+}
+
+.good-hero {
+  height: 176px;
+}
+
+.good-coin-stack {
+  width: 158px;
+  height: 136px;
+}
+
+.good-coin-stack .coin {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 224, 240, 1) 0%, rgba(255, 117, 184, 1) 28%, rgba(219, 45, 123, 1) 60%, rgba(116, 17, 65, 1) 100%);
+  border: 1px solid rgba(255, 190, 224, 0.92);
+  box-shadow:
+    inset -8px -10px 16px rgba(87, 10, 45, 0.32),
+    inset 8px 8px 18px rgba(255, 255, 255, 0.42),
+    0 0 30px rgba(255, 92, 168, 0.58);
+}
+
+.good-coin-stack .coin:before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.20);
+}
+
+.good-coin-stack .coin:after {
+  font-size: 23px;
+  border: none;
+  text-shadow: 0 0 8px rgba(255,255,255,0.35);
+}
+
+.good-coin-stack .c1 { width: 92px; height: 92px; right: 7px; bottom: 8px; z-index: 3; }
+.good-coin-stack .c2 { width: 82px; height: 82px; right: 24px; bottom: 52px; z-index: 2; opacity: .95; }
+.good-coin-stack .c3 { width: 76px; height: 76px; right: 8px; bottom: 84px; z-index: 1; opacity: .78; }
+.good-coin-stack .base {
+  width: 142px;
+  height: 28px;
+  right: -2px;
+  background: radial-gradient(ellipse, rgba(255,92,168,.56), transparent 70%);
+}
+
+.good-card-img-wrap {
+  height: 230px;
+}
+
+.good-card-img {
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.good-card .p-3 {
+  padding: 12px;
+}
+
+.good-card h3 {
+  font-size: 15px;
+}
+
+.good-card p {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (min-width: 1536px) {
+  .good-main main {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .good-card-img-wrap {
+    height: 215px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .good-card-img-wrap {
+    height: 230px;
+  }
+}
+
+
+/* ============================================================
+   EVERBOND PIXEL UI v1.0
+   Desktop target: approved dashboard screenshot direction.
+   This layer is intentionally fixed/measured, not fluid guessing.
+   ============================================================ */
+
+:root {
+  --px-bg: #050506;
+  --px-sidebar: #07070b;
+  --px-card: #111116;
+  --px-line: rgba(255,255,255,.12);
+  --px-pink: #ff5ca8;
+  --px-pink-2: #ec3f8f;
+  --px-gold: #ffc12e;
+  --px-muted: #b9bbc7;
+  --px-text: #ffffff;
+}
+
+html,
+body {
+  background: var(--px-bg) !important;
+  overflow-x: hidden;
+}
+
+.px-shell {
+  min-height: 100vh;
+  background: var(--px-bg);
+  color: var(--px-text);
+}
+
+.px-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  width: 230px;
+  height: 100vh;
+  background: var(--px-sidebar);
+  border-right: 1px solid rgba(255,255,255,.10);
+  display: flex;
+  flex-direction: column;
+  padding: 22px 12px 18px;
+  overflow-y: auto;
+}
+
+.px-main {
+  margin-left: 230px;
+  min-height: 100vh;
+  background: var(--px-bg);
+}
+
+.px-topbar {
+  height: 56px;
+  background: var(--px-bg);
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.px-infinity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  color: var(--px-pink);
+  line-height: 1;
+  text-shadow:
+    0 0 8px rgba(255,92,168,.95),
+    0 0 24px rgba(255,92,168,.70);
+}
+
+.px-infinity::before {
+  content: "∞";
+  transform: scaleX(1.25);
+}
+
+.px-sidebar-row {
+  width: 100%;
+  height: 55px;
+  border-radius: 13px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--px-muted);
+  font-size: 14px;
+  font-weight: 650;
+  transition: .16s ease;
+}
+
+.px-sidebar-row.active {
+  color: #ffffff;
+  background: rgba(255,92,168,.105);
+  border: 1px solid rgba(255,92,168,.76);
+  box-shadow: 0 0 22px rgba(255,92,168,.16);
+}
+
+.px-sidebar-row:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,.04);
+}
+
+.px-pill {
+  border: 1px solid rgba(255,92,168,.55);
+  background: rgba(255,255,255,.035);
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255,92,168,.06);
+}
+
+.px-page {
+  padding: 16px 20px 48px;
+  background: var(--px-bg);
+}
+
+.px-hero {
+  position: relative;
+  height: 182px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255,92,168,.48);
+  background:
+    radial-gradient(circle at 88% 50%, rgba(255,92,168,.24), transparent 20%),
+    radial-gradient(circle at 4% 5%, rgba(255,92,168,.18), transparent 10%),
+    linear-gradient(112deg, #050506 0%, #050506 31%, #0e040b 48%, #220717 68%, #050506 100%);
+  box-shadow:
+    0 0 30px rgba(255,92,168,.17),
+    inset 0 0 70px rgba(255,92,168,.035);
+}
+
+.px-hero::before,
+.px-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,92,168,.22);
+  transform: skewX(-13deg);
+}
+
+.px-hero::before { left: 32.5%; }
+.px-hero::after { left: 63.2%; }
+
+.px-hero-grid {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.08fr .9fr 1fr;
+  align-items: center;
+  column-gap: 34px;
+  padding: 0 30px;
+}
+
+.px-gold-coin {
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 35% 28%, #fff4b9 0%, #ffd766 27%, #f4a715 61%, #8f5100 100%);
+  border: 1px solid rgba(255,222,128,.95);
+  box-shadow:
+    inset 0 0 16px rgba(255,255,255,.58),
+    0 0 29px rgba(255,193,46,.40);
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  font-weight: 900;
+}
+
+.px-gold-coin::before {
+  content: "∞";
+  transform: scaleX(1.15);
+}
+
+.px-coin-stack {
+  position: relative;
+  width: 150px;
+  height: 130px;
+}
+
+.px-coin-stack .coin {
+  position: absolute;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 34% 28%, #ffe0f0 0%, #ff75b8 28%, #db2d7b 60%, #741141 100%);
+  border: 1px solid rgba(255,190,224,.92);
+  box-shadow:
+    inset -8px -10px 16px rgba(87,10,45,.32),
+    inset 8px 8px 18px rgba(255,255,255,.42),
+    0 0 30px rgba(255,92,168,.58);
+}
+
+.px-coin-stack .coin::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,.20);
+}
+
+.px-coin-stack .coin::after {
+  content: "∞";
+  position: absolute;
+  inset: 21%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.94);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 900;
+  transform: scaleX(1.12);
+  text-shadow: 0 0 8px rgba(255,255,255,.35);
+}
+
+.px-coin-stack .c1 { width: 92px; height: 92px; right: 7px; bottom: 8px; z-index: 3; }
+.px-coin-stack .c2 { width: 82px; height: 82px; right: 24px; bottom: 52px; z-index: 2; opacity: .95; }
+.px-coin-stack .c3 { width: 76px; height: 76px; right: 8px; bottom: 84px; z-index: 1; opacity: .78; }
+.px-coin-stack .base {
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  width: 142px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,92,168,.56), transparent 70%);
+  filter: blur(1px);
+}
+
+.px-section-row {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.px-filter-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.11);
+  background: rgba(255,255,255,.028);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.px-filter-btn {
+  height: 34px;
+  border-radius: 9px;
+  padding: 0 20px;
+  color: var(--px-muted);
+  font-size: 14px;
+  transition: .15s ease;
+}
+
+.px-filter-btn.active {
+  color: var(--px-pink);
+  border: 1px solid rgba(255,92,168,.68);
+  background: rgba(255,92,168,.13);
+}
+
+.px-search {
+  width: 280px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.11);
+  background: rgba(255,255,255,.028);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.px-card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.px-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: #111116;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.px-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,92,168,.68);
+  box-shadow: 0 16px 44px rgba(236,72,153,.14);
+}
+
+.px-card-image-wrap {
+  height: 212px;
+  position: relative;
+  overflow: hidden;
+  background: #0b0b0e;
+}
+
+.px-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.px-tag-red { border-color: rgba(248,113,113,.48); background: rgba(127,29,29,.32); color: #fecaca; }
+.px-tag-gold { border-color: rgba(251,191,36,.48); background: rgba(120,53,15,.32); color: #fde68a; }
+.px-tag-purple { border-color: rgba(168,85,247,.48); background: rgba(88,28,135,.34); color: #ddd6fe; }
+.px-tag-pink { border-color: rgba(244,114,182,.48); background: rgba(131,24,67,.34); color: #fbcfe8; }
+
+@media (max-width: 1600px) {
+  .px-card-image-wrap { height: 196px; }
+}
+
+@media (max-width: 1440px) {
+  .px-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1200px) {
+  .px-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1023px) {
+  .px-sidebar { display: none; }
+  .px-main { margin-left: 0; }
+  .px-hero { height: auto; }
+  .px-hero-grid {
+    grid-template-columns: 1fr;
+    padding: 28px;
+    row-gap: 24px;
+  }
+  .px-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .px-card-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================================
+   EVERBOND V18 SCREENSHOT LOCK
+   Matches approved screenshot: /docs/reference/approved-homepage-reference.png
+   ============================================================ */
+
+:root {
+  --v18-bg: #050506;
+  --v18-sidebar: #07070b;
+  --v18-card: #111116;
+  --v18-card-border: rgba(255,255,255,.13);
+  --v18-pink: #ff5ca8;
+  --v18-pink-soft: rgba(255,92,168,.12);
+  --v18-gold: #ffc12e;
+  --v18-muted: #b9bbc7;
+}
+
+html,
+body {
+  background: var(--v18-bg) !important;
+}
+
+.v18-shell {
+  min-height: 100vh;
+  background: var(--v18-bg);
+  color: #fff;
+}
+
+.v18-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 50;
+  width: 230px;
+  height: 100vh;
+  background: var(--v18-sidebar);
+  border-right: 1px solid rgba(255,255,255,.10);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px 16px;
+  overflow-y: auto;
+}
+
+.v18-main {
+  margin-left: 230px;
+  min-height: 100vh;
+  background: var(--v18-bg);
+}
+
+.v18-topbar {
+  height: 56px;
+  background: var(--v18-bg);
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.v18-infinity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--v18-pink);
+  text-shadow:
+    0 0 8px rgba(255,92,168,.95),
+    0 0 24px rgba(255,92,168,.72);
+}
+
+.v18-infinity::before {
+  content: "∞";
+  transform: scaleX(1.28);
+}
+
+.v18-sidebar-row {
+  height: 55px;
+  border-radius: 13px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--v18-muted);
+  font-size: 14px;
+  font-weight: 650;
+  transition: .15s ease;
+}
+
+.v18-sidebar-row.active {
+  color: #fff;
+  background: rgba(255,92,168,.105);
+  border: 1px solid rgba(255,92,168,.76);
+  box-shadow: 0 0 22px rgba(255,92,168,.16);
+}
+
+.v18-sidebar-row:hover {
+  color: #fff;
+  background: rgba(255,255,255,.04);
+}
+
+.v18-control {
+  border: 1px solid rgba(255,92,168,.55);
+  background: rgba(255,255,255,.035);
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255,92,168,.06);
+}
+
+.v18-page {
+  padding: 16px 20px 48px;
+  background: var(--v18-bg);
+}
+
+.v18-hero {
+  position: relative;
+  height: 182px;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255,92,168,.49);
+  background:
+    radial-gradient(circle at 88% 50%, rgba(255,92,168,.25), transparent 20%),
+    radial-gradient(circle at 2% 5%, rgba(255,92,168,.18), transparent 10%),
+    linear-gradient(112deg, #050506 0%, #050506 31%, #0e040b 48%, #220717 68%, #050506 100%);
+  box-shadow:
+    0 0 30px rgba(255,92,168,.17),
+    inset 0 0 70px rgba(255,92,168,.035);
+}
+
+.v18-hero::before,
+.v18-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,92,168,.22);
+  transform: skewX(-13deg);
+}
+
+.v18-hero::before { left: 32.5%; }
+.v18-hero::after { left: 63.2%; }
+
+.v18-hero-grid {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.08fr .9fr 1fr;
+  align-items: center;
+  column-gap: 34px;
+  padding: 0 30px;
+}
+
+.v18-gold-coin {
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 35% 28%, #fff4b9 0%, #ffd766 27%, #f4a715 61%, #8f5100 100%);
+  border: 1px solid rgba(255,222,128,.95);
+  box-shadow:
+    inset 0 0 16px rgba(255,255,255,.58),
+    0 0 29px rgba(255,193,46,.40);
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  font-weight: 900;
+}
+
+.v18-gold-coin::before {
+  content: "∞";
+  transform: scaleX(1.15);
+}
+
+.v18-coin-stack {
+  position: relative;
+  width: 154px;
+  height: 132px;
+}
+
+.v18-coin-stack .coin {
+  position: absolute;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 34% 28%, #ffe0f0 0%, #ff75b8 28%, #db2d7b 60%, #741141 100%);
+  border: 1px solid rgba(255,190,224,.92);
+  box-shadow:
+    inset -8px -10px 16px rgba(87,10,45,.32),
+    inset 8px 8px 18px rgba(255,255,255,.42),
+    0 0 30px rgba(255,92,168,.58);
+}
+
+.v18-coin-stack .coin::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,.20);
+}
+
+.v18-coin-stack .coin::after {
+  content: "∞";
+  position: absolute;
+  inset: 21%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.94);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 900;
+  transform: scaleX(1.12);
+  text-shadow: 0 0 8px rgba(255,255,255,.35);
+}
+
+.v18-coin-stack .c1 { width: 92px; height: 92px; right: 7px; bottom: 8px; z-index: 3; }
+.v18-coin-stack .c2 { width: 82px; height: 82px; right: 24px; bottom: 52px; z-index: 2; opacity: .95; }
+.v18-coin-stack .c3 { width: 76px; height: 76px; right: 8px; bottom: 84px; z-index: 1; opacity: .78; }
+.v18-coin-stack .base {
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  width: 142px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,92,168,.56), transparent 70%);
+  filter: blur(1px);
+}
+
+.v18-section-row {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.v18-filter-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.11);
+  background: rgba(255,255,255,.028);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.v18-filter-btn {
+  height: 34px;
+  border-radius: 9px;
+  padding: 0 20px;
+  color: var(--v18-muted);
+  font-size: 14px;
+  transition: .15s ease;
+}
+
+.v18-filter-btn.active {
+  color: var(--v18-pink);
+  border: 1px solid rgba(255,92,168,.68);
+  background: rgba(255,92,168,.13);
+}
+
+.v18-search {
+  width: 280px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.11);
+  background: rgba(255,255,255,.028);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.v18-card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.v18-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: #111116;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.v18-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,92,168,.68);
+  box-shadow: 0 16px 44px rgba(236,72,153,.14);
+}
+
+.v18-card-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #0b0b0e;
+  aspect-ratio: 1.16 / 1;
+}
+
+.v18-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.v18-tag-red { border-color: rgba(248,113,113,.48); background: rgba(127,29,29,.32); color: #fecaca; }
+.v18-tag-gold { border-color: rgba(251,191,36,.48); background: rgba(120,53,15,.32); color: #fde68a; }
+.v18-tag-purple { border-color: rgba(168,85,247,.48); background: rgba(88,28,135,.34); color: #ddd6fe; }
+.v18-tag-pink { border-color: rgba(244,114,182,.48); background: rgba(131,24,67,.34); color: #fbcfe8; }
+
+@media (max-width: 1440px) {
+  .v18-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1200px) {
+  .v18-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1023px) {
+  .v18-sidebar { display: none; }
+  .v18-main { margin-left: 0; }
+  .v18-hero { height: auto; }
+  .v18-hero-grid {
+    grid-template-columns: 1fr;
+    padding: 28px;
+    row-gap: 24px;
+  }
+  .v18-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .v18-card-grid { grid-template-columns: 1fr; }
+}
+
+
+/* V19 real coin hero from approved reference */
+.v19-hero-image {
+  height: 182px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255,92,168,.49);
+  background-image: url('/assets/everbond-v19-real-coin-hero.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 0 30px rgba(255,92,168,.17),
+    inset 0 0 70px rgba(255,92,168,.035);
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    height: 170px;
+    background-size: cover;
+  }
+}
+
+
+/* V20 fixes: top controls, categories, hero click area */
+.v20-topbar {
+  height: 56px;
+  background: #050506;
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+@media (min-width: 1024px) {
+  .v20-topbar {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+  }
+}
+
+.v20-category-tab {
+  height: 38px;
+  border-radius: 11px;
+  border: 1px solid rgba(255,92,168,.48);
+  background: rgba(255,255,255,.025);
+  padding: 0 18px;
+  color: #b9bbc7;
+  font-size: 14px;
+  font-weight: 700;
+  transition: .15s ease;
+}
+
+.v20-category-tab.active {
+  color: #ff5ca8;
+  background: rgba(255,92,168,.12);
+  border-color: rgba(255,92,168,.75);
+}
+
+.v20-category-tab:hover {
+  color: white;
+  border-color: rgba(255,92,168,.7);
+}
+
+.v20-hero-buy-link {
+  position: absolute;
+  left: 47.6%;
+  top: 73%;
+  width: 145px;
+  height: 36px;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 5;
+}
+
+
+/* V21 sidebar/brand cleanup */
+:root {
+  --v21-sidebar-width: 260px;
+}
+
+.v18-sidebar,
+.px-sidebar,
+.good-sidebar,
+.eb-final-sidebar,
+.eb-sidebar {
+  width: var(--v21-sidebar-width) !important;
+}
+
+.v18-main,
+.px-main,
+.good-main,
+.eb-final-main,
+.eb-main {
+  margin-left: var(--v21-sidebar-width) !important;
+}
+
+.v20-topbar,
+.v18-topbar,
+.px-topbar,
+.good-topbar,
+.eb-final-topbar {
+  margin-left: var(--v21-sidebar-width) !important;
+  width: calc(100% - var(--v21-sidebar-width)) !important;
+}
+
+.v18-card-image-wrap,
+.px-card-image-wrap,
+.good-card-img-wrap,
+.eb-final-card-image-wrap {
+  aspect-ratio: auto !important;
+  height: 236px !important;
+}
+
+.v18-card-image,
+.px-card-image,
+.good-card-img,
+.eb-final-card-image {
+  object-position: center 18% !important;
+}
+
+.v20-hero-buy-link {
+  display: none !important;
+}
+
+.v21-brand-ever {
+  color: #ff5ca8;
+}
+
+.v21-brand-bond {
+  color: #ffffff;
+}
+
+.v21-social-circle {
+  display: inline-flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.055);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 1023px) {
+  .v18-main,
+  .px-main,
+  .good-main,
+  .eb-final-main,
+  .eb-main {
+    margin-left: 0 !important;
+  }
+
+  .v20-topbar,
+  .v18-topbar,
+  .px-topbar,
+  .good-topbar,
+  .eb-final-topbar {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+
+/* ============================================================
+   V30 FINISHED HOMEPAGE
+   - Complete hero banner, no stretch
+   - Cards visible below hero
+   - 5-card desktop grid
+   ============================================================ */
+
+.v19-hero-image {
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 1516 / 250 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 14px 0 !important;
+  overflow: visible !important;
+  background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+  background-size: contain !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  box-shadow: none !important;
+}
+
+.v19-hero-image::before,
+.v19-hero-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+.v18-page {
+  padding: 10px 18px 48px !important;
+  min-height: 100vh !important;
+  background: #050506 !important;
+}
+
+.v18-section-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: auto !important;
+  min-height: 48px !important;
+  margin: 0 0 8px 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.v18-filter-bar {
+  height: 38px !important;
+}
+
+.v18-filter-btn {
+  height: 30px !important;
+  padding: 0 16px !important;
+  font-size: 13px !important;
+}
+
+.v20-category-tab {
+  height: 34px !important;
+  padding: 0 15px !important;
+  font-size: 13px !important;
+}
+
+.v18-search {
+  height: 38px !important;
+}
+
+.v18-card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.v18-card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.v18-card-image-wrap {
+  height: auto !important;
+  aspect-ratio: 0.98 / 1 !important;
+}
+
+.v18-card-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+.v18-card h3 {
+  font-size: 15px !important;
+}
+
+.v18-card p {
+  font-size: 12px !important;
+  line-height: 1.42 !important;
+}
+
+.v18-card .p-3 {
+  padding: 11px !important;
+}
+
+@media (max-width: 1450px) {
+  .v18-card-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1150px) {
+  .v18-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .v18-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+.v22-category-title .ever { color: #ff5ca8; }
+.v22-category-title .bond,
+.v22-category-title .rest { color: #ffffff; }
+
+/* V36 READY HOMEPAGE HERO FIX
+   Shows the full hero banner without cutting off the bottom icons/labels.
+   Keeps the same page layout; only fixes the hero display ratio/height.
+*/
+
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 514 !important;
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+    border-radius: 18px !important;
+    border: 0 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .v18-page {
+    padding-top: 0 !important;
+  }
+
+  .v18-page > section.pt-5 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .v18-section-row {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    height: auto !important;
+    aspect-ratio: 2048 / 514 !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+  }
+}
+
+
+/* V37: thinner hero without distortion + smaller cards so row 2 starts showing */
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    aspect-ratio: 2048 / 470 !important;
+    margin-bottom: 12px !important;
+    border-radius: 18px !important;
+    background-size: cover !important;
+    background-position: center 52% !important;
+  }
+
+  .v18-page {
+    padding: 8px 16px 40px !important;
+  }
+
+  .v18-section-row {
+    min-height: 44px !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  .v18-filter-bar {
+    height: 36px !important;
+  }
+
+  .v18-filter-btn {
+    height: 28px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+  }
+
+  .v20-category-tab {
+    height: 32px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+  }
+
+  .v18-search {
+    height: 36px !important;
+  }
+
+  .v18-card-grid {
+    gap: 12px !important;
+  }
+
+  .v18-card-image-wrap,
+  .px-card-image-wrap,
+  .good-card-img-wrap,
+  .eb-final-card-image-wrap {
+    height: auto !important;
+    aspect-ratio: 1.08 / 1 !important;
+  }
+
+  .v18-card .p-3 {
+    padding: 10px !important;
+  }
+
+  .v18-card h3 {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+  }
+
+  .v18-card p {
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    aspect-ratio: 2048 / 470 !important;
+    background-size: cover !important;
+    background-position: center 52% !important;
+  }
+}
+
+/* V38 HALF-HEIGHT HERO REPLACEMENT
+   Site-ready fix only. No generated picture output.
+   Replaced the hero asset with a shorter native 2048x300 banner.
+   The banner is now a little over half the previous vertical asset height.
+   It keeps full width and crops vertical length only, so internal artwork/text is not stretched.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 300 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    border-radius: 16px !important;
+    border: 0 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .v18-page {
+    padding-top: 6px !important;
+  }
+
+  .v18-page > section.pt-5 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    height: auto !important;
+    aspect-ratio: 2048 / 300 !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+  }
+}
+
+/* V40 HERO 2048x514 REPLACEMENT
+   The hero file itself is now exactly 2048x514.
+   The site displays that same ratio, so the text/artwork inside is not distorted.
+   This replaces the vertically cropped/thinned version.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 514 !important;
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+    border-radius: 18px !important;
+    border: 0 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .v18-page {
+    padding-top: 0 !important;
+  }
+
+  .v18-page > section.pt-5 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2048 / 514 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* V41 TRUE HALF-SIZE HERO REPLACEMENT
+   The hero file itself is now a half-size proportional copy: 1024x257.
+   No cropping was used.
+   The site displays that replacement banner without stretching it.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: 1024px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 1024 / 257 !important;
+    margin: 0 auto 16px auto !important;
+    border-radius: 18px !important;
+    border: 0 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1024 / 257 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* V43 FULL-WIDTH SAME-HEIGHT HERO
+   Keeps the approximate on-page vertical height from the half-size hero,
+   but makes the hero fill the left/right content width.
+   The replacement hero asset is native 2048x300;
+   internal text/artwork was scaled proportionally, not stretched.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 300 !important;
+    margin: 0 0 12px 0 !important;
+    border-radius: 18px !important;
+    border: 0 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .v18-page {
+    padding-top: 6px !important;
+  }
+
+  .v18-page > section.pt-5 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    aspect-ratio: 2048 / 300 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* V44 HERO CONTENT REFIT
+   The hero is still the same full-width short size: 2048x300.
+   The internal logo/text/chest/coins were recomposed for this height,
+   not shrunk into the center and not CSS-stretched.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 300 !important;
+    margin: 0 0 12px 0 !important;
+    border-radius: 18px !important;
+    border: 0 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .v18-page {
+    padding-top: 6px !important;
+  }
+
+  .v18-page > section.pt-5 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    aspect-ratio: 2048 / 300 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* V46 LOCKED HERO CORRECTION
+   Only fixes the hero banner.
+   Locked size/proportion: 2048x300.
+   The asset itself is exactly 2048x300.
+   CSS displays it at the same ratio so the internal text/images are not stretched.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 300 !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    aspect-ratio: 2048 / 300 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* V47 EXACT UPLOADED HERO REPLACEMENT
+   The hero asset itself is exactly 2048x300.
+   It uses the user's uploaded hero artwork and replaces the previous incorrect banner.
+   The rest of the site is unchanged.
+*/
+@media (min-width: 1024px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2048 / 300 !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    aspect-ratio: 2048 / 300 !important;
+    background-image: url('/assets/everbond-v19-real-coin-hero.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+
+
+/* V48 FINAL HERO FIX
+   Use the finalized 2048x300 hero asset as a real image element
+   so the banner displays at the exact intended ratio with no crop,
+   no missing top/bottom border, and no internal stretching. */
+.v19-hero-image {
+  width: 100% !important;
+  margin: 0 0 12px 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+
+.v19-hero-image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+@media (max-width: 1023px) {
+  .v19-hero-image {
+    margin-bottom: 12px !important;
+  }
+
+  .v19-hero-image__img {
+    border-radius: 16px;
+  }
+}
+
+/* V51 POLYBUZZ-STYLE FLUSH LAYOUT
+   - Hero starts flush at the top of the content area.
+   - Top-right language/coin/login controls overlay above the hero.
+   - Hero uses square edges and fills left/right.
+   - Menu button lives next to the EverBond logo in the sidebar.
+   - Collapsing the sidebar expands hero and cards to fill the empty space.
+   - Hero asset replaced with user-provided 1197x260 image.
+*/
+
+@media (min-width: 1024px) {
+  .v18-shell {
+    --v51-sidebar-width: 230px;
+    --v51-sidebar-collapsed-width: 74px;
+    --v51-current-sidebar-width: var(--v51-sidebar-width);
+  }
+
+  .v18-shell.v51-sidebar-collapsed {
+    --v51-current-sidebar-width: var(--v51-sidebar-collapsed-width);
+  }
+
+  .v18-sidebar {
+    width: var(--v51-current-sidebar-width) !important;
+    transition: width .22s ease;
+    overflow-x: hidden !important;
+    padding: 14px 10px 16px !important;
+  }
+
+  .v18-main {
+    margin-left: var(--v51-current-sidebar-width) !important;
+    transition: margin-left .22s ease;
+    min-height: 100vh !important;
+    background: #050506 !important;
+  }
+
+  .v20-topbar {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: var(--v51-current-sidebar-width) !important;
+    z-index: 60 !important;
+    height: 48px !important;
+    padding: 0 16px !important;
+    background: transparent !important;
+    border-bottom: 0 !important;
+    pointer-events: none !important;
+    transition: left .22s ease;
+  }
+
+  .v51-topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 48px;
+    pointer-events: none;
+  }
+
+  .v51-topbar-inner > div,
+  .v51-topbar-inner a,
+  .v51-topbar-inner button {
+    pointer-events: auto;
+  }
+
+  .v51-top-pill,
+  .v20-topbar .v18-control,
+  .v20-topbar button {
+    background: rgba(5,5,6,.62) !important;
+    backdrop-filter: blur(14px);
+  }
+
+  .v18-page {
+    padding: 0 0 48px !important;
+    background: #050506 !important;
+  }
+
+  .v19-hero-image {
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+  }
+
+  .v19-hero-image__img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0 !important;
+  }
+
+  .v18-page > section:not(.v19-hero-image) {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .v18-section-row {
+    margin-top: 0 !important;
+  }
+
+  .v18-card-grid {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .v51-sidebar-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    margin-bottom: 22px;
+  }
+
+  .v51-sidebar-brand {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+    padding-left: 2px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .v51-sidebar-toggle {
+    display: inline-flex;
+    height: 36px;
+    width: 36px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #ff5ca8;
+  }
+
+  .v51-sidebar-toggle:hover {
+    background: rgba(255,92,168,.12);
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v18-sidebar {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v51-brand-name,
+  .v18-shell.v51-sidebar-collapsed .v51-sidebar-label,
+  .v18-shell.v51-sidebar-collapsed .v51-sidebar-footer {
+    opacity: 0;
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v51-sidebar-brand-row {
+    justify-content: center;
+    gap: 0;
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v51-sidebar-brand {
+    flex: 0 0 auto;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v51-sidebar-toggle {
+    margin: 0 auto;
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v18-sidebar-row {
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+
+  .v18-shell.v51-sidebar-collapsed .v18-sidebar-row span {
+    gap: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .v20-topbar {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    z-index: 60 !important;
+    background: transparent !important;
+    border-bottom: 0 !important;
+  }
+
+  .v18-page {
+    padding-top: 0 !important;
+  }
+
+  .v19-hero-image,
+  .v19-hero-image__img {
+    border-radius: 0 !important;
+  }
+}
+
+
+
+/* V52 top-right control visibility fix */
+.v51-top-actions,
+.v50-top-actions,
+.v49-top-actions,
+.top-actions,
+.header-actions,
+.nav-actions,
+[class*="top-actions"],
+[class*="header-actions"],
+[class*="nav-actions"] {
+  right: 24px !important;
+  margin-right: 24px !important;
+}
+
+/* V52 social icon sizing */
+.eb-social-icons svg,
+.social-icons svg,
+[class*="social"] svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+}
+
+
+/* V53: keep top-right controls fully visible with sidebar open */
+.v51-top-actions,
+.v50-top-actions,
+.v49-top-actions,
+.top-actions,
+.header-actions,
+.nav-actions,
+[class*="top-actions"],
+[class*="header-actions"],
+[class*="nav-actions"] {
+  right: 18px !important;
+  margin-right: 0 !important;
+  transform: none !important;
+  max-width: calc(100vw - 290px) !important;
+  overflow: visible !important;
+  z-index: 100 !important;
+}
+
+header,
+.v51-topbar,
+.v50-topbar,
+.v49-topbar,
+.topbar,
+[class*="topbar"],
+[class*="header"] {
+  overflow: visible !important;
+}
+
+.v51-top-actions > *,
+.v50-top-actions > *,
+.v49-top-actions > *,
+.top-actions > *,
+.header-actions > *,
+.nav-actions > *,
+[class*="top-actions"] > *,
+[class*="header-actions"] > *,
+[class*="nav-actions"] > * {
+  flex-shrink: 0 !important;
+}
+
+/* Show login/logout as text instead of only an arrow icon */
+.v51-top-actions button:last-child,
+.v50-top-actions button:last-child,
+.v49-top-actions button:last-child,
+.top-actions button:last-child,
+.header-actions button:last-child,
+.nav-actions button:last-child,
+[class*="top-actions"] button:last-child,
+[class*="header-actions"] button:last-child,
+[class*="nav-actions"] button:last-child {
+  min-width: 86px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  font-size: 14px !important;
+  white-space: nowrap !important;
+}
+
+.v51-top-actions button:last-child svg,
+.v50-top-actions button:last-child svg,
+.v49-top-actions button:last-child svg,
+.top-actions button:last-child svg,
+.header-actions button:last-child svg,
+.nav-actions button:last-child svg,
+[class*="top-actions"] button:last-child svg,
+[class*="header-actions"] button:last-child svg,
+[class*="nav-actions"] button:last-child svg {
+  display: none !important;
+}
+
+.v51-top-actions button:last-child::after,
+.v50-top-actions button:last-child::after,
+.v49-top-actions button:last-child::after,
+.top-actions button:last-child::after,
+.header-actions button:last-child::after,
+.nav-actions button:last-child::after,
+[class*="top-actions"] button:last-child::after,
+[class*="header-actions"] button:last-child::after,
+[class*="nav-actions"] button:last-child::after {
+  content: "Log In";
+  display: inline-block;
+  color: inherit;
+}
+
+/* Give all sidebar nav buttons the same pink outline treatment */
+aside nav a,
+aside nav button,
+.sidebar nav a,
+.sidebar nav button,
+[class*="sidebar"] nav a,
+[class*="sidebar"] nav button,
+[class*="side"] nav a,
+[class*="side"] nav button {
+  border: 1px solid rgba(255, 92, 168, 0.72) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 0 0 1px rgba(255, 92, 168, 0.06), 0 0 16px rgba(255, 92, 168, 0.08) !important;
+}
+
+aside nav a:not(.active),
+aside nav button:not(.active),
+.sidebar nav a:not(.active),
+.sidebar nav button:not(.active),
+[class*="sidebar"] nav a:not(.active),
+[class*="sidebar"] nav button:not(.active),
+[class*="side"] nav a:not(.active),
+[class*="side"] nav button:not(.active) {
+  background: rgba(255, 92, 168, 0.035) !important;
+}
+
+
+/* V54: real top control visibility fix */
+body,
+html,
+#__next,
+main,
+header,
+nav,
+.v51-topbar,
+.v50-topbar,
+.v49-topbar,
+.topbar,
+[class*="topbar"],
+[class*="header"] {
+  overflow-x: visible !important;
+}
+
+.v51-top-actions,
+.v50-top-actions,
+.v49-top-actions,
+.top-actions,
+.header-actions,
+.nav-actions,
+[class*="top-actions"],
+[class*="header-actions"],
+[class*="nav-actions"] {
+  position: fixed !important;
+  top: 8px !important;
+  right: 24px !important;
+  left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  width: auto !important;
+  max-width: calc(100vw - 48px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+  z-index: 9999 !important;
+}
+
+.v51-top-actions > *,
+.v50-top-actions > *,
+.v49-top-actions > *,
+.top-actions > *,
+.header-actions > *,
+.nav-actions > *,
+[class*="top-actions"] > *,
+[class*="header-actions"] > *,
+[class*="nav-actions"] > * {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  overflow: visible !important;
+}
+
+.v51-top-actions button:last-child,
+.v50-top-actions button:last-child,
+.v49-top-actions button:last-child,
+.top-actions button:last-child,
+.header-actions button:last-child,
+.nav-actions button:last-child,
+[class*="top-actions"] button:last-child,
+[class*="header-actions"] button:last-child,
+[class*="nav-actions"] button:last-child {
+  min-width: 92px !important;
+  width: auto !important;
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  white-space: nowrap !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+}
+
+.v51-top-actions button:last-child svg,
+.v50-top-actions button:last-child svg,
+.v49-top-actions button:last-child svg,
+.top-actions button:last-child svg,
+.header-actions button:last-child svg,
+.nav-actions button:last-child svg,
+[class*="top-actions"] button:last-child svg,
+[class*="header-actions"] button:last-child svg,
+[class*="nav-actions"] button:last-child svg {
+  display: none !important;
+}
+
+.v51-top-actions button:last-child::after,
+.v50-top-actions button:last-child::after,
+.v49-top-actions button:last-child::after,
+.top-actions button:last-child::after,
+.header-actions button:last-child::after,
+.nav-actions button:last-child::after,
+[class*="top-actions"] button:last-child::after,
+[class*="header-actions"] button:last-child::after,
+[class*="nav-actions"] button:last-child::after {
+  content: "Log In" !important;
+  display: inline-block !important;
+  color: inherit !important;
+  font-weight: 700 !important;
+}
+
+/* Keep signed-out EverCoin display compact and visible */
+.v51-top-actions button,
+.v50-top-actions button,
+.v49-top-actions button,
+.top-actions button,
+.header-actions button,
+.nav-actions button,
+[class*="top-actions"] button,
+[class*="header-actions"] button,
+[class*="nav-actions"] button {
+  overflow: visible !important;
+}
+
+
+/* V55: one fixed safe position for top-right controls, sidebar open or closed */
+.v51-top-actions,
+.v50-top-actions,
+.v49-top-actions,
+.top-actions,
+.header-actions,
+.nav-actions,
+[class*="top-actions"],
+[class*="header-actions"],
+[class*="nav-actions"] {
+  position: fixed !important;
+  top: 8px !important;
+  right: 132px !important;
+  left: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  width: auto !important;
+  max-width: calc(100vw - 160px) !important;
+  overflow: visible !important;
+  z-index: 9999 !important;
+}
+
+.v51-top-actions > *,
+.v50-top-actions > *,
+.v49-top-actions > *,
+.top-actions > *,
+.header-actions > *,
+.nav-actions > *,
+[class*="top-actions"] > *,
+[class*="header-actions"] > *,
+[class*="nav-actions"] > * {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  overflow: visible !important;
+}
+
+
+/* V74: create form border + top-right control visibility + readable language menu */
+.v74-top-actions {
+  margin-right: 28px;
+  flex-wrap: nowrap;
+}
+
+.v74-top-actions > * {
+  flex: 0 0 auto;
+}
+
+.v74-language-button {
+  min-width: 64px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .v74-top-actions {
+    margin-right: 18px;
+  }
+}
+
+
+/* V75: top-right controls fit cleanly, coin color, and stronger create form border visibility */
+.v74-top-actions {
+  gap: 8px !important;
+  right: 10px !important;
+  max-width: calc(100vw - 12px) !important;
+}
+
+.v74-top-actions .v74-language-button {
+  min-width: 64px !important;
+  width: 64px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  justify-content: center !important;
+}
+
+.v74-top-actions .v75-coin-pill {
+  color: #d85b97 !important;
+}
+
+.v74-top-actions .v75-coin-pill svg {
+  color: #d85b97 !important;
+}
+
+.v74-top-actions .v75-login-pill {
+  min-width: 112px !important;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  white-space: nowrap !important;
+}
+
+/* V76: clean language button and keep create form closer under shorter hero */
+.v74-top-actions .v74-language-button {
+  min-width: 48px !important;
+  width: 48px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  gap: 0 !important;
+}
+
+.v74-top-actions .v74-language-button::after {
+  content: none !important;
+  display: none !important;
+}
+
+.v74-top-actions .relative:first-child {
+  margin-right: -2px !important;
+}
+
+
+
+/* V78: remove stray login text from language control and pull create form up tighter */
+.v74-top-actions > .relative .v74-language-button::after,
+.v74-top-actions .v74-language-button::after,
+[class*="top-actions"] .v74-language-button::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* V79: keep language menu clean and native-language labels visible */
+.v79-language-menu button::after,
+.v79-language-option::after,
+.v79-language-option *::after {
+  content: none !important;
+  display: none !important;
+}
+
+.v79-language-option {
+  white-space: nowrap !important;
+}
+
+/* V80: stop global login label from appearing inside language dropdown */
+.v74-top-actions .v79-language-menu button:last-child::after,
+.v74-top-actions .v79-language-menu .v79-language-option:last-child::after,
+.v74-top-actions .v79-language-menu button::after,
+.v74-top-actions .v79-language-menu .v79-language-option::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* V83: final hard alignment for language dropdown code column */
+.v79-language-menu .v83-language-option {
+  position: relative !important;
+  min-height: 46px !important;
+  padding-right: 56px !important;
+}
+
+.v79-language-menu .v83-language-label {
+  display: block !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}
+
+.v79-language-menu .v83-language-code {
+  position: absolute !important;
+  right: 16px !important;
+  top: 50% !important;
+  width: 32px !important;
+  transform: translateY(-50%) !important;
+  text-align: right !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgb(164 166 179) !important;
+  line-height: 1 !important;
+}
+
+.v79-language-menu .v83-language-option::after,
+.v79-language-menu .v83-language-label::after,
+.v79-language-menu .v83-language-code::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* V84: guaranteed language dropdown alignment, not affected by global button pseudo-labels */
+.v79-language-menu .v84-language-option {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-height: 46px !important;
+  padding: 12px 56px 12px 16px !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  font-size: 14px !important;
+  outline: none !important;
+}
+
+.v79-language-menu .v84-language-option:focus {
+  background: rgba(255,255,255,0.06) !important;
+}
+
+.v79-language-menu .v84-language-label {
+  display: block !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+
+.v79-language-menu .v84-language-code {
+  position: absolute !important;
+  right: 16px !important;
+  top: 50% !important;
+  width: 32px !important;
+  transform: translateY(-50%) !important;
+  text-align: right !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgb(164 166 179) !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+
+
+/* Uncensored Girlfriend: pink + black design layer */
+:root {--ug-bg:#050507;--ug-panel:#141018;--ug-soft-pink:#FFB5D5;--ug-hot-pink:#FF4F9A;--ug-red:#FF253D;
+--eb-black:#050507;--eb-panel:#141018;--eb-card:#18121C;--eb-pink:#FFB5D5;--eb-pink2:#FF4F9A;}
+html,body{background:#050507!important;color:#FFF8FC}
+body{background:radial-gradient(circle at 85% 4%,rgba(255,181,213,.17),transparent 36rem),#050507!important}
+::selection{background:#FFB5D5;color:#050507}
+.good-shell,.good-main,.eb-final-shell,.eb-final-main{background:#050507}
+.good-sidebar,.eb-final-sidebar{background:#0C0910}
+.good-hero,.eb-final-hero{border-color:rgba(255,181,213,.55)}
+.good-sidebar-link.active{border-color:#FFB5D5;background:rgba(255,181,213,.13)}
+.good-infinity,.eb-final-infinity{color:#FFB5D5;text-shadow:0 0 22px rgba(255,181,213,.4)}

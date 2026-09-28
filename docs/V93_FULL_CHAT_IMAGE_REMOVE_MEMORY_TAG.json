@@ -1,0 +1,11 @@
+{
+  "version": "v93",
+  "base": "everbond-v92-profile-similar-pink-filters-chat-fit.zip",
+  "changes": [
+    "Chat page only: character image now uses object-contain so the full picture is visible and not cropped.",
+    "Chat page only: slightly tightened sidebar vertical spacing so the image and buttons remain visible.",
+    "Visible tag pills now exclude Ever Memory\u2122 and show up to 4 normal character tags.",
+    "Ever Memory\u2122 badge on character cards remains unchanged."
+  ],
+  "strict_no_other_changes": true
+}

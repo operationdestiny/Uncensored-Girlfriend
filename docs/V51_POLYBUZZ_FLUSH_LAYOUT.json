@@ -1,0 +1,27 @@
+{
+  "status": "READY",
+  "version": "v51",
+  "base_zip": "everbond-v50-user-hero-replaced-site.zip",
+  "changed": [
+    "src/components/layout/AppShell.tsx",
+    "src/components/layout/DashboardSidebar.tsx",
+    "src/components/layout/NavBar.tsx",
+    "src/components/character/HomeCompanionBrowser.tsx",
+    "src/app/globals.css",
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "package.json"
+  ],
+  "changes_made": [
+    "Hero banner is flush to the top of content area",
+    "Hero banner has square edges",
+    "Top-right language, coin, and login controls overlay above the hero and still work",
+    "Hamburger menu moved next to the EverBond logo in the sidebar",
+    "Sidebar can collapse/expand",
+    "Main content, hero, and character cards expand when sidebar collapses",
+    "Hero image replaced with user's latest provided banner"
+  ],
+  "hero_asset_size": [
+    1197,
+    260
+  ]
+}

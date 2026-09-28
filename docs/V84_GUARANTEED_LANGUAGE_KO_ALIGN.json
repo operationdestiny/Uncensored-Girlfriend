@@ -1,0 +1,9 @@
+{
+  "status": "READY",
+  "version": "v84",
+  "changed": [
+    "src/components/layout/LanguageSelector.tsx",
+    "src/app/globals.css"
+  ],
+  "fix": "Dropdown rows are no longer button elements, so the global top-actions button:last-child::after Log In rule cannot attach to Korean. The KO code is absolutely positioned at right:16px in the same fixed code column as EN, ES, FR, JA, and DE."
+}

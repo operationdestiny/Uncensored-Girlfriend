@@ -1,0 +1,24 @@
+{
+  "status": "READY",
+  "version": "v36",
+  "base_zip": "everbond-v30-finished-homepage(1).zip",
+  "reference_screenshot": "9a68a4ea-a992-4044-b621-9ba52a168f37.png",
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css"
+  ],
+  "hero_asset_size": [
+    2048,
+    514
+  ],
+  "fix": "Hero now uses native 2048x514 aspect ratio instead of a fixed cropped height, so the bottom icons/labels are visible and the banner is not stretched.",
+  "unchanged": [
+    "Cards",
+    "Sidebar",
+    "Tabs",
+    "Search",
+    "Character data",
+    "Routing",
+    "Localhost run method"
+  ]
+}

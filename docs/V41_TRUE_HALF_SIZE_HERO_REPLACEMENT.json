@@ -1,0 +1,19 @@
+{
+  "status": "READY",
+  "version": "v41",
+  "base_zip": "everbond-v40-hero-2048x514-replaced-site.zip",
+  "changed": [
+    "public/assets/everbond-v19-real-coin-hero.png",
+    "src/app/globals.css",
+    "package.json"
+  ],
+  "old_hero_size": [
+    2048,
+    514
+  ],
+  "new_hero_size": [
+    1024,
+    257
+  ],
+  "note": "Created a proportional half-size copy of the hero banner with no cropping, replaced the old hero file, and updated the site to use the replacement correctly."
+}

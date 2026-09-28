@@ -1,0 +1,10 @@
+{
+  "version": "v85",
+  "base": "everbond-v84-guaranteed-language-ko-align(3).zip",
+  "changes": [
+    "Pricing page image slightly enlarged by raising max width.",
+    "Pricing page section vertically centers the image with even top and bottom page spacing.",
+    "Removed focus ring/highlight styling from invisible pricing plan link overlays."
+  ],
+  "strict_no_other_changes": true
+}

@@ -1,0 +1,9 @@
+{
+  "status": "READY",
+  "version": "v65",
+  "changed": [
+    "src/app/legal/page.tsx",
+    "src/app/contact/page.tsx"
+  ],
+  "note": "Centered legal page top header with requested text hierarchy. Updated Help Center title so Ever is pink and Bond is white."
+}

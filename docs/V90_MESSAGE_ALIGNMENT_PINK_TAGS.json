@@ -1,0 +1,9 @@
+{
+  "version": "v90",
+  "base": "everbond-v89-chat-message-layout-fixes.zip",
+  "changes": [
+    "Chat page only: character/user message row now shares the same max-width and horizontal center alignment as the typing box.",
+    "Discover character cards only: all tag pills now use the same pink border/pink styling instead of mixed tag colors."
+  ],
+  "strict_no_other_changes": true
+}

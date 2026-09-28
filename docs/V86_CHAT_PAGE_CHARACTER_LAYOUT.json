@@ -1,0 +1,15 @@
+{
+  "version": "v86",
+  "base": "everbond-v85-pricing-larger-centered-no-highlight.zip",
+  "changes": [
+    "Updated chat page left character card so the image only contains the character name at the bottom.",
+    "Moved archetype/profile/tags/actions below the image.",
+    "Changed Save/Share/Report/Refresh from large text buttons to small icon buttons.",
+    "Report uses flag icon, share uses connected share icon, refresh uses circular arrow icon, save uses star icon.",
+    "Ever Memory remains included with the tag pills.",
+    "Added a small Profile button below the image.",
+    "Changed user message bubbles from purple to pink.",
+    "Changed send button from purple to pink."
+  ],
+  "strict_no_other_changes": true
+}

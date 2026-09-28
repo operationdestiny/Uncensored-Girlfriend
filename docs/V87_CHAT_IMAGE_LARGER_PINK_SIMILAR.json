@@ -1,0 +1,11 @@
+{
+  "version": "v87",
+  "base": "everbond-v86-chat-page-character-layout.zip",
+  "changes": [
+    "Chat page only: widened left character column and reduced side padding so the character picture is much larger.",
+    "Chat page only: kept only character name inside image, enlarged name text and picture glow.",
+    "Chat page only: pushed icon buttons and Similar Companions lower toward the typing bar alignment area.",
+    "Chat page only: changed Similar Companions button from purple to pink."
+  ],
+  "strict_no_other_changes": true
+}

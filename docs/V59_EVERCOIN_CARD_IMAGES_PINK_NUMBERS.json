@@ -1,0 +1,11 @@
+{
+  "status": "READY",
+  "version": "v59",
+  "changed": [
+    "src/app/coins/page.tsx",
+    "public/assets/evercoin-1000.png",
+    "public/assets/evercoin-5000.png",
+    "public/assets/evercoin-10000.png"
+  ],
+  "note": "Updated EverCoin package cards to use the correct individual chest image per card and changed package numbers to pink."
+}

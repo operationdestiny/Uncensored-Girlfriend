@@ -1,0 +1,8 @@
+{
+  "status": "READY",
+  "version": "v60",
+  "changed": [
+    "src/app/pricing/page.tsx"
+  ],
+  "note": "Pricing page now only contains the Simple pricing section with requested plan text. Removed The Difference and FAQ sections from pricing page. Unlock buttons are pink."
+}

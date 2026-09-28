@@ -1,0 +1,8 @@
+{
+  "status": "READY",
+  "version": "v64",
+  "changed": [
+    "src/app/legal/page.tsx"
+  ],
+  "note": "Updated legal page text, table-of-contents pink-bordered buttons, pink section headings, and pink borders around each section box."
+}

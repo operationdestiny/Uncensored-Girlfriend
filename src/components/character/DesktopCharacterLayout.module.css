@@ -1,0 +1,61 @@
+/*
+  Desktop-only character presentation adjustments.
+  Everything below starts at Tailwind's lg breakpoint (1024px), so the
+  existing phone/tablet layout remains unchanged.
+*/
+
+@media (min-width: 1024px) {
+  /* CHAT PAGE ----------------------------------------------------------- */
+
+  /* Let the portrait occupy all spare vertical space in the desktop rail. */
+  .chatPage aside > div > div:first-child {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 0%;
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  .chatPage aside > div > div:first-child > button {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  /* Show the entire character portrait instead of cropping it. */
+  .chatPage aside > div > div:first-child img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /*
+    Desktop rail order in ChatShell:
+      1. portrait
+      2. name + profile
+      3. search tags
+      4. save/share/restart actions
+      5. similar characters link
+    Hide only #3 and #4. The image expands, leaving the requested controls
+    together at the bottom of the rail.
+  */
+  .chatPage aside > div > div:nth-of-type(3),
+  .chatPage aside > div > div:nth-of-type(4) {
+    display: none;
+  }
+
+  /* PROFILE PAGE -------------------------------------------------------- */
+
+  /* Show the whole portrait on desktop instead of the 4:5 cropped card. */
+  .profilePage main > section > div:first-child > div:first-child img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 150px);
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  /* Remove profile search tags on desktop only. */
+  .profilePage main > section > div:first-child > div:nth-child(2) {
+    display: none;
+  }
+}

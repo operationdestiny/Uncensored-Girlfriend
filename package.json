@@ -1,0 +1,42 @@
+{
+    "name":  "uncensored-girlfriend",
+    "version":  "0.1.0",
+    "private":  true,
+    "description":  "Uncensored Girlfriend AI companion platform",
+    "scripts":  {
+                    "predev":  "node scripts/verify-evercoin-launch.mjs",
+                    "dev":  "next dev",
+                    "prebuild":  "node scripts/verify-evercoin-launch.mjs",
+                    "build":  "next build",
+                    "start":  "next start",
+                    "retire:characters":  "node scripts/apply-retired-character-removals.mjs",
+                    "import:characters":  "node scripts/import-characters.mjs \u0026\u0026 node scripts/apply-retired-character-removals.mjs --remote-only \u0026\u0026 node scripts/apply-emma-smith-opening-scenario-fix.mjs \u0026\u0026 node scripts/apply-character-placement-swaps.mjs"
+                },
+    "dependencies":  {
+                         "@supabase/supabase-js":  "^2.110.3",
+                         "@vercel/functions":  "^3.9.5",
+                         "clsx":  "^2.1.1",
+                         "dotenv":  "^17.4.2",
+                         "lucide-react":  "^0.468.0",
+                         "next":  "^15.1.3",
+                         "react":  "^19.0.0",
+                         "react-dom":  "^19.0.0",
+                         "retell-client-js-sdk":  "^2.0.8",
+                         "sharp":  "^0.34.5",
+                         "tumblr.js":  "^5.0.1",
+                         "ws":  "^8.21.3",
+                         "zod":  "^3.24.1"
+                     },
+    "devDependencies":  {
+                            "@types/node":  "^22.10.5",
+                            "@types/react":  "^19.0.2",
+                            "@types/react-dom":  "^19.0.2",
+                            "@types/ws":  "^8.18.1",
+                            "autoprefixer":  "^10.4.20",
+                            "eslint":  "^9.17.2",
+                            "eslint-config-next":  "^15.1.3",
+                            "postcss":  "^8.4.49",
+                            "tailwindcss":  "^3.4.17",
+                            "typescript":  "^5.7.2"
+                        }
+}
