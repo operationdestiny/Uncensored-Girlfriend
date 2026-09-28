@@ -304,7 +304,7 @@ button, input {font:inherit;}
 .ug-nav .ug-nav-auth svg {flex:0 0 auto;}
 .ug-drawer-backdrop {z-index:150;}
 .ug-drawer {max-width:360px;}
-.ug-hero-eyebrow {letter-spacing:.22em;text-transform:uppercase;}
+.ug-hero-eyebrow {letter-spacing:.12em;text-transform:none;}
 .ug-hero-logo {margin-top:7px;}
 @media(max-width:720px) {
   .ug-nav-inner {padding:0 12px;gap:8px;}
