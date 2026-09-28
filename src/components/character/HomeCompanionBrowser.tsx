@@ -8,6 +8,7 @@ import { CharacterGrid } from "@/components/character/CharacterGrid";
 import { UgPreviewGallery } from "@/components/character/UgPreviewGallery";
 import { useCharacterBrowser } from "@/components/character/useCharacterBrowser";
 import { useSiteLanguage } from "@/lib/site-language";
+import { heroTagline } from "@/components/layout/nav-copy";
 
 const groups: { id: CharacterCategory; title: string }[] = [
   { id: "everbond-girls", title: "AI Girlfriends" },
@@ -42,10 +43,10 @@ export function HomeCompanionBrowser({ characters: initial }: { characters: Char
           <img src="/ug-hero-portrait.webp" alt="Portrait illustration of an AI companion" />
         </div>
         <div className="ug-hero-content">
-          <div className="ug-hero-eyebrow"><span className="ug-mini-heart">♥</span> YOUR WORLD. YOUR STORY.</div>
+          <div className="ug-hero-eyebrow"><span className="ug-mini-heart" aria-hidden="true">♥</span> {heroTagline[language]}</div>
           <img className="ug-hero-logo" src="/ug-lips-logo.svg" alt="" width="108" height="85" />
           <h1>Uncensored<br /><em>Girlfriend</em></h1>
-          <p className="ug-hero-script">Your companion. Your imagination.</p>
+          
           <p className="ug-hero-description">Meet a companion who feels like your own. Chat, roleplay, share images and videos, and connect through voice — all in a world you create.</p>
           <div className="ug-hero-buttons">
             <Link className="ug-button-primary" href="/characters">Explore AI Girlfriends <ArrowRight size={18}/></Link>
