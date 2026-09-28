@@ -1,48 +1,112 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, Heart, Gift, PlusCircle, Compass, Coins, Home, Scale, Mail } from "lucide-react";
+import { useSiteLanguage } from "@/lib/site-language";
+import { navigationCopy } from "@/components/layout/nav-copy";
 
 const links = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/characters", label: "Explore", icon: Compass },
-  { href: "/create", label: "Create Your Girlfriend", icon: PlusCircle },
-  { href: "/my-bond", label: "My Companions", icon: Heart },
-  { href: "/shop", label: "Gift Shop", icon: Gift },
-  { href: "/coins", label: "KissCoins", icon: Coins },
-  { href: "/legal", label: "Legal", icon: Scale },
-  { href: "/contact", label: "Contact", icon: Mail }
+  { href: "/", key: "home", icon: Home },
+  { href: "/characters", key: "explore", icon: Compass },
+  { href: "/create", key: "create", icon: PlusCircle },
+  { href: "/my-bond", key: "myCompanions", icon: Heart },
+  { href: "/shop", key: "giftShop", icon: Gift },
+  { href: "/coins", key: "pricing", icon: Coins }
 ] as const;
 
-export function MobileNavigation({ open, onClose }: { open: boolean; onClose: () => void }) {
+const secondaryLinks = [
+  { href: "/legal", key: "legal", icon: Scale },
+  { href: "/contact", key: "contact", icon: Mail }
+] as const;
+
+export function MobileNavigation({
+  open,
+  onClose
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   const pathname = usePathname();
+  const { language } = useSiteLanguage();
+  const copy = navigationCopy[language];
+  const closeButton = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (!open) return;
-    const old = document.body.style.overflow;
+    const oldOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const esc = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
-    window.addEventListener("keydown", esc);
-    return () => { document.body.style.overflow = old; window.removeEventListener("keydown", esc); };
+    closeButton.current?.focus();
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = oldOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [open, onClose]);
+
   if (!open) return null;
+
+  function active(href: string) {
+    return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+  }
+
   return (
-    <div className="ug-drawer-backdrop" role="dialog" aria-modal="true" aria-label="Navigation">
-      <button type="button" aria-label="Close navigation" className="ug-drawer-overlay" onClick={onClose} />
-      <aside className="ug-drawer">
+    <div className="ug-drawer-backdrop" role="dialog" aria-modal="true" aria-label={copy.openMenu}>
+      <button
+        type="button"
+        aria-label={copy.closeMenu}
+        className="ug-drawer-overlay"
+        onClick={onClose}
+      />
+      <aside className="ug-drawer" id="ug-site-drawer">
         <div className="ug-drawer-head">
-          <Link href="/" onClick={onClose} className="ug-brand"><img src="/ug-lips-logo.svg" alt="" width="42" height="42" /><span>Uncensored <b>Girlfriend</b></span></Link>
-          <button type="button" onClick={onClose} aria-label="Close menu" className="ug-icon-button"><X size={20}/></button>
+          <Link href="/" onClick={onClose} className="ug-brand">
+            <img src="/ug-lips-logo.svg" alt="" width="42" height="42" />
+            <span>Uncensored <b>Girlfriend</b></span>
+          </Link>
+          <button
+            ref={closeButton}
+            type="button"
+            onClick={onClose}
+            aria-label={copy.closeMenu}
+            className="ug-icon-button"
+          >
+            <X size={20} aria-hidden="true" />
+          </button>
         </div>
-        <nav aria-label="Mobile navigation" className="ug-drawer-links">
-          {links.map(({href,label,icon:Icon}) => (
-            <Link key={href} href={href} onClick={onClose} className={pathname===href?"active":""}>
-              <Icon size={19} />{label}
+        <nav aria-label={copy.openMenu} className="ug-drawer-links">
+          {links.map(({ href, key, icon: Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={onClose}
+              className={active(href) ? "active" : ""}
+              aria-current={active(href) ? "page" : undefined}
+            >
+              <Icon size={19} aria-hidden="true" />
+              {copy[key]}
             </Link>
           ))}
         </nav>
-        <div className="ug-drawer-note">Your companion. Your imagination.</div>
+        <nav aria-label="Information" className="ug-drawer-links ug-drawer-links-secondary">
+          {secondaryLinks.map(({ href, key, icon: Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={onClose}
+              className={active(href) ? "active" : ""}
+              aria-current={active(href) ? "page" : undefined}
+            >
+              <Icon size={19} aria-hidden="true" />
+              {copy[key]}
+            </Link>
+          ))}
+        </nav>
       </aside>
     </div>
   );
