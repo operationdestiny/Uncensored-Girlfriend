@@ -286,3 +286,44 @@ button, input {font:inherit;}
 .ug-my-companions-header h1 {font-size:clamp(37px,5vw,61px);font-weight:850;letter-spacing:-.06em;color:#fff;margin:0 0 8px;}
 .ug-my-companions-header h1 em {font-style:normal;color:#ff91c2;}
 .ug-my-companions-header>p:last-child {font-size:14px;color:#cfbfca;}
+
+
+/* Header redesign: navigation lives exclusively inside the left drawer. */
+.ug-nav {z-index:110;isolation:isolate;}
+.ug-nav-inner {justify-content:space-between;max-width:none;gap:24px;}
+.ug-nav-left {display:flex;align-items:center;gap:14px;min-width:0;flex:0 1 auto;}
+.ug-nav-left .ug-mobile-menu {display:inline-flex;flex:0 0 42px;order:0;}
+.ug-nav-left .ug-brand {min-width:0;}
+.ug-nav-actions {display:flex;align-items:center;gap:12px;margin-left:auto;flex:0 0 auto;position:relative;z-index:1;}
+.ug-nav .ug-language {display:flex;align-items:center;flex:0 0 auto;}
+.ug-nav .ug-language > div {position:relative;}
+.ug-nav .ug-language button {display:inline-flex!important;min-height:42px;min-width:60px;padding:0 13px!important;border:1px solid rgba(255,181,213,.28)!important;border-radius:12px!important;background:#241b24!important;color:#fff!important;font-weight:750;}
+.ug-nav .ug-language .v79-language-menu {z-index:200;}
+.ug-nav .ug-nav-auth {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;max-width:min(48vw,240px);padding:0 18px;border:1px solid #ff82b9;border-radius:12px;background:linear-gradient(120deg,#ff62a8,#ff438f);color:#fff;font-size:13px;font-weight:800;white-space:nowrap;cursor:pointer;box-shadow:0 7px 25px rgba(255,65,135,.20);transition:background .2s,transform .2s;}
+.ug-nav .ug-nav-auth:hover {transform:translateY(-1px);background:linear-gradient(120deg,#ff78b6,#ff519c);}
+.ug-nav .ug-nav-auth svg {flex:0 0 auto;}
+.ug-drawer-backdrop {z-index:150;}
+.ug-drawer {max-width:360px;}
+.ug-hero-eyebrow {letter-spacing:.22em;text-transform:uppercase;}
+.ug-hero-logo {margin-top:7px;}
+@media(max-width:720px) {
+  .ug-nav-inner {padding:0 12px;gap:8px;}
+  .ug-nav-left {gap:5px;}
+  .ug-nav-left .ug-mobile-menu {display:inline-flex;width:36px;height:37px;flex-basis:36px;}
+  .ug-nav-left .ug-brand {font-size:clamp(11px,3.05vw,15px);letter-spacing:-.05em;gap:2px;}
+  .ug-nav-left .ug-brand img {width:30px;height:36px;}
+  .ug-nav-actions {gap:6px;}
+  .ug-nav .ug-language {display:flex;}
+  .ug-nav .ug-language button {min-width:47px!important;min-height:37px!important;padding:0 8px!important;font-size:11px;}
+  .ug-nav .ug-nav-auth {min-height:37px;max-width:143px;padding:0 9px;font-size:10px;white-space:normal;text-align:center;line-height:1.15;}
+  .ug-nav .ug-nav-auth svg {display:none;}
+  .ug-hero-eyebrow {max-width:100%;font-size:9px;letter-spacing:.10em;}
+  .ug-hero-script {display:none;}
+}
+@media(max-width:390px) {
+  .ug-nav-left .ug-brand {font-size:11px;}
+  .ug-nav-left .ug-brand img {width:25px;}
+  .ug-nav-left {gap:2px;}
+  .ug-nav-actions {gap:4px;}
+  .ug-nav .ug-nav-auth {max-width:115px;padding:0 6px;font-size:9px;}
+}
