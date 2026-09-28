@@ -1,28 +1,21 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
-import { toDatabaseCharacter, EverBondCharacterInput } from "@/lib/character-import";
-import { getSupabaseServiceClient } from "@/lib/supabase/server";
 
-const ImportRequest = z.object({
-  characters: z.array(z.any()).min(1)
-});
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-export async function POST(request: Request) {
-  const importSecret = process.env.CHARACTER_IMPORT_SECRET;
-  const providedSecret = request.headers.get("x-everbond-import-secret");
-
-  if (importSecret && providedSecret !== importSecret) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const parsed = ImportRequest.safeParse(await request.json());
-  if (!parsed.success) return NextResponse.json({ error: "Invalid import payload" }, { status: 400 });
-
-  const supabase = getSupabaseServiceClient();
-  const rows = (parsed.data.characters as EverBondCharacterInput[]).map(toDatabaseCharacter);
-
-  const { error, count } = await supabase.from("characters").upsert(rows, { onConflict: "seed_id", count: "exact" });
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-
-  return NextResponse.json({ ok: true, imported: count ?? rows.length });
+/**
+ * Serverless bulk imports are intentionally disabled. The inherited endpoint
+ * previously allowed privileged writes whenever CHARACTER_IMPORT_SECRET was
+ * unset; it also targeted a non-existent seed_id conflict key.
+ *
+ * For a properly licensed, independent character catalog, use the
+ * authenticated, dry-run-by-default scripts/import-characters.mjs job after
+ * inspecting its source data and credentials. Never copy another business's
+ * customer records, credentials or assets.
+ */
+export async function POST() {
+  return NextResponse.json(
+    { error: "BULK_IMPORT_DISABLED", message: "Use the reviewed, manual import job." },
+    { status: 410, headers: { "Cache-Control": "no-store" } }
+  );
 }

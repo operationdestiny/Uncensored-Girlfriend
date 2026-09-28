@@ -1,5 +1,6 @@
 "use client";
 
+import { assertIndependentSupabaseUrl } from "@/lib/supabase/project";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 let browserClient: SupabaseClient | null | undefined;
@@ -16,6 +17,8 @@ export function getSupabaseBrowserClient(): SupabaseClient | null {
     browserClient = null;
     return browserClient;
   }
+
+  assertIndependentSupabaseUrl(url);
 
   browserClient = createClient(url, anonKey, {
     auth: {

@@ -4,8 +4,7 @@
 
 SET check_function_bodies = false;
 
-DROP EXTENSION pg_net;
-
+-- The original snapshot attempted to drop a built-in extension. No drop on clean installs.
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public REVOKE UPDATE ON SEQUENCES FROM anon;
 
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public REVOKE UPDATE ON SEQUENCES FROM authenticated;
@@ -2816,7 +2815,7 @@ REVOKE ALL ON FUNCTION public.reverse_message_purchase(text, text, text, text, b
 
 GRANT ALL ON FUNCTION public.reverse_message_purchase(text, text, text, text, bigint) TO service_role;
 
-CREATE FUNCTION public.rls_auto_enable()
+CREATE OR REPLACE FUNCTION public.rls_auto_enable()
   RETURNS event_trigger
   LANGUAGE plpgsql
   SECURITY DEFINER
@@ -3306,9 +3305,9 @@ ALTER TABLE public.character_gallery_images
 ALTER TABLE public.character_gallery_images
   ADD CONSTRAINT character_gallery_images_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.character_gallery_images TO anon;
+-- Removed overprivileged anon table grant on public.character_gallery_images.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.character_gallery_images TO authenticated;
+GRANT SELECT ON public.character_gallery_images TO authenticated;
 
 GRANT ALL ON public.character_gallery_images TO service_role;
 
@@ -3354,9 +3353,9 @@ ALTER TABLE public.character_image_requests
 ALTER TABLE public.character_image_requests
   ADD CONSTRAINT character_image_requests_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.character_image_requests TO anon;
+-- Removed overprivileged anon table grant on public.character_image_requests.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.character_image_requests TO authenticated;
+GRANT SELECT ON public.character_image_requests TO authenticated;
 
 GRANT ALL ON public.character_image_requests TO service_role;
 
@@ -3392,9 +3391,9 @@ ALTER TABLE public.character_reports
 ALTER TABLE public.character_reports
   ADD CONSTRAINT character_reports_status_check CHECK (status = ANY (ARRAY['open'::text, 'reviewing'::text, 'resolved'::text, 'dismissed'::text]));
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.character_reports TO anon;
+-- Removed overprivileged anon table grant on public.character_reports.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.character_reports TO authenticated;
+-- Removed overprivileged authenticated table grant on public.character_reports.
 
 GRANT ALL ON public.character_reports TO service_role;
 
@@ -3461,6 +3460,7 @@ CREATE TABLE public.characters (
   official             boolean                  DEFAULT false NOT NULL,
   creator_id           uuid,
   creator_username     text,
+  voice_gender        text,
   view_count           bigint                   DEFAULT 0 NOT NULL,
   favorite_count       bigint                   DEFAULT 0 NOT NULL,
   is_active            boolean                  DEFAULT true NOT NULL,
@@ -3495,9 +3495,9 @@ ALTER TABLE public.characters
 ALTER TABLE public.characters
   ADD CONSTRAINT characters_visibility_check CHECK (visibility = ANY (ARRAY['public'::text, 'unlisted'::text, 'private'::text]));
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.characters TO anon;
+GRANT SELECT ON public.characters TO anon;
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.characters TO authenticated;
+GRANT SELECT ON public.characters TO authenticated;
 
 GRANT ALL ON public.characters TO service_role;
 
@@ -3619,9 +3619,9 @@ ALTER TABLE public.conversations
 ALTER TABLE public.conversations
   ADD CONSTRAINT conversations_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.conversations TO anon;
+-- Removed overprivileged anon table grant on public.conversations.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.conversations TO authenticated;
+-- Removed overprivileged authenticated table grant on public.conversations.
 
 GRANT ALL ON public.conversations TO service_role;
 
@@ -3671,9 +3671,9 @@ ALTER TABLE public.ever_memory
 ALTER TABLE public.ever_memory
   ADD CONSTRAINT ever_memory_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.ever_memory TO anon;
+-- Removed overprivileged anon table grant on public.ever_memory.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.ever_memory TO authenticated;
+-- Removed overprivileged authenticated table grant on public.ever_memory.
 
 GRANT ALL ON public.ever_memory TO service_role;
 
@@ -3722,9 +3722,9 @@ ALTER TABLE public.evercoin_adjustments
 ALTER TABLE public.evercoin_adjustments
   ADD CONSTRAINT evercoin_adjustments_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evercoin_adjustments TO anon;
+-- Removed overprivileged anon table grant on public.evercoin_adjustments.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.evercoin_adjustments TO authenticated;
+GRANT SELECT ON public.evercoin_adjustments TO authenticated;
 
 GRANT ALL ON public.evercoin_adjustments TO service_role;
 
@@ -3753,9 +3753,9 @@ ALTER TABLE public.evercoin_debt_events
 ALTER TABLE public.evercoin_debt_events
   ADD CONSTRAINT evercoin_debt_events_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evercoin_debt_events TO anon;
+-- Removed overprivileged anon table grant on public.evercoin_debt_events.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.evercoin_debt_events TO authenticated;
+GRANT SELECT ON public.evercoin_debt_events TO authenticated;
 
 GRANT ALL ON public.evercoin_debt_events TO service_role;
 
@@ -3800,9 +3800,9 @@ ALTER TABLE public.evercoin_purchases
 ALTER TABLE public.evercoin_purchases
   ADD CONSTRAINT evercoin_purchases_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evercoin_purchases TO anon;
+-- Removed overprivileged anon table grant on public.evercoin_purchases.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.evercoin_purchases TO authenticated;
+GRANT SELECT ON public.evercoin_purchases TO authenticated;
 
 GRANT ALL ON public.evercoin_purchases TO service_role;
 
@@ -3830,9 +3830,9 @@ ALTER TABLE public.evercoin_transactions
 ALTER TABLE public.evercoin_transactions
   ADD CONSTRAINT evercoin_transactions_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evercoin_transactions TO anon;
+-- Removed overprivileged anon table grant on public.evercoin_transactions.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.evercoin_transactions TO authenticated;
+GRANT SELECT ON public.evercoin_transactions TO authenticated;
 
 GRANT ALL ON public.evercoin_transactions TO service_role;
 
@@ -3864,9 +3864,9 @@ ALTER TABLE public.evercoin_wallets
 ALTER TABLE public.evercoin_wallets
   ADD CONSTRAINT evercoin_wallets_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evercoin_wallets TO anon;
+-- Removed overprivileged anon table grant on public.evercoin_wallets.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.evercoin_wallets TO authenticated;
+GRANT SELECT ON public.evercoin_wallets TO authenticated;
 
 GRANT ALL ON public.evercoin_wallets TO service_role;
 
@@ -3901,9 +3901,9 @@ ALTER TABLE public.evershop_purchase_requests
 ALTER TABLE public.evershop_purchase_requests
   ADD CONSTRAINT evershop_purchase_requests_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evershop_purchase_requests TO anon;
+-- Removed overprivileged anon table grant on public.evershop_purchase_requests.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.evershop_purchase_requests TO authenticated;
+-- Removed overprivileged authenticated table grant on public.evershop_purchase_requests.
 
 GRANT ALL ON public.evershop_purchase_requests TO service_role;
 
@@ -3931,9 +3931,9 @@ ALTER TABLE public.favorites
 ALTER TABLE public.favorites
   ADD CONSTRAINT favorites_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.favorites TO anon;
+-- Removed overprivileged anon table grant on public.favorites.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.favorites TO authenticated;
+-- Removed overprivileged authenticated table grant on public.favorites.
 
 GRANT ALL ON public.favorites TO service_role;
 
@@ -3978,9 +3978,9 @@ ALTER TABLE public.gift_send_requests
 ALTER TABLE public.gift_send_requests
   ADD CONSTRAINT gift_send_requests_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.gift_send_requests TO anon;
+-- Removed overprivileged anon table grant on public.gift_send_requests.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.gift_send_requests TO authenticated;
+-- Removed overprivileged authenticated table grant on public.gift_send_requests.
 
 GRANT ALL ON public.gift_send_requests TO service_role;
 
@@ -4021,9 +4021,9 @@ ALTER TABLE public.image_unlocks
 ALTER TABLE public.image_unlocks
   ADD CONSTRAINT image_unlocks_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.image_unlocks TO anon;
+-- Removed overprivileged anon table grant on public.image_unlocks.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.image_unlocks TO authenticated;
+-- Removed overprivileged authenticated table grant on public.image_unlocks.
 
 GRANT ALL ON public.image_unlocks TO service_role;
 
@@ -4053,9 +4053,9 @@ ALTER TABLE public.message_adjustments
 ALTER TABLE public.message_adjustments
   ADD CONSTRAINT message_adjustments_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.message_adjustments TO anon;
+-- Removed overprivileged anon table grant on public.message_adjustments.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.message_adjustments TO authenticated;
+GRANT SELECT ON public.message_adjustments TO authenticated;
 
 GRANT ALL ON public.message_adjustments TO service_role;
 
@@ -4088,9 +4088,9 @@ ALTER TABLE public.message_credit_usage
 ALTER TABLE public.message_credit_usage
   ADD CONSTRAINT message_credit_usage_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.message_credit_usage TO anon;
+-- Removed overprivileged anon table grant on public.message_credit_usage.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.message_credit_usage TO authenticated;
+GRANT SELECT ON public.message_credit_usage TO authenticated;
 
 GRANT ALL ON public.message_credit_usage TO service_role;
 
@@ -4135,9 +4135,9 @@ ALTER TABLE public.message_purchases
 ALTER TABLE public.message_purchases
   ADD CONSTRAINT message_purchases_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.message_purchases TO anon;
+-- Removed overprivileged anon table grant on public.message_purchases.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.message_purchases TO authenticated;
+GRANT SELECT ON public.message_purchases TO authenticated;
 
 GRANT ALL ON public.message_purchases TO service_role;
 
@@ -4163,9 +4163,9 @@ ALTER TABLE public.message_to_evercoin_migrations
 ALTER TABLE public.message_to_evercoin_migrations
   ADD CONSTRAINT message_to_evercoin_migrations_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.message_to_evercoin_migrations TO anon;
+-- Removed overprivileged anon table grant on public.message_to_evercoin_migrations.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.message_to_evercoin_migrations TO authenticated;
+GRANT SELECT ON public.message_to_evercoin_migrations TO authenticated;
 
 GRANT ALL ON public.message_to_evercoin_migrations TO service_role;
 
@@ -4191,9 +4191,9 @@ ALTER TABLE public.message_transactions
 ALTER TABLE public.message_transactions
   ADD CONSTRAINT message_transactions_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.message_transactions TO anon;
+-- Removed overprivileged anon table grant on public.message_transactions.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.message_transactions TO authenticated;
+GRANT SELECT ON public.message_transactions TO authenticated;
 
 GRANT ALL ON public.message_transactions TO service_role;
 
@@ -4225,9 +4225,9 @@ ALTER TABLE public.message_wallets
 ALTER TABLE public.message_wallets
   ADD CONSTRAINT message_wallets_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.message_wallets TO anon;
+-- Removed overprivileged anon table grant on public.message_wallets.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.message_wallets TO authenticated;
+GRANT SELECT ON public.message_wallets TO authenticated;
 
 GRANT ALL ON public.message_wallets TO service_role;
 
@@ -4269,9 +4269,9 @@ ALTER TABLE public.ever_memory
 ALTER TABLE public.messages
   ADD CONSTRAINT messages_role_check CHECK (role = ANY (ARRAY['user'::text, 'character'::text, 'system'::text, 'gift'::text]));
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.messages TO anon;
+-- Removed overprivileged anon table grant on public.messages.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.messages TO authenticated;
+-- Removed overprivileged authenticated table grant on public.messages.
 
 GRANT ALL ON public.messages TO service_role;
 
@@ -4325,9 +4325,9 @@ ALTER TABLE public.profiles
 ALTER TABLE public.profiles
   ADD CONSTRAINT profiles_username_format_check CHECK (username ~ '^[a-z0-9_]{3,30}$'::text);
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.profiles TO anon;
+-- Removed overprivileged anon table grant on public.profiles.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.profiles TO authenticated;
+-- Removed overprivileged authenticated table grant on public.profiles.
 
 GRANT ALL ON public.profiles TO service_role;
 
@@ -4380,9 +4380,9 @@ ALTER TABLE public.relationship_states
 ALTER TABLE public.relationship_states
   ADD CONSTRAINT relationship_states_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.relationship_states TO anon;
+-- Removed overprivileged anon table grant on public.relationship_states.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.relationship_states TO authenticated;
+-- Removed overprivileged authenticated table grant on public.relationship_states.
 
 GRANT ALL ON public.relationship_states TO service_role;
 
@@ -4416,9 +4416,9 @@ ALTER TABLE public.trial_devices
 ALTER TABLE public.trial_devices
   ADD CONSTRAINT trial_devices_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.trial_devices TO anon;
+-- Removed overprivileged anon table grant on public.trial_devices.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.trial_devices TO authenticated;
+-- Removed overprivileged authenticated table grant on public.trial_devices.
 
 GRANT ALL ON public.trial_devices TO service_role;
 
@@ -4446,9 +4446,9 @@ ALTER TABLE public.user_character_preferences
 ALTER TABLE public.user_character_preferences
   ADD CONSTRAINT user_character_preferences_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.user_character_preferences TO anon;
+-- Removed overprivileged anon table grant on public.user_character_preferences.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.user_character_preferences TO authenticated;
+GRANT SELECT ON public.user_character_preferences TO authenticated;
 
 GRANT ALL ON public.user_character_preferences TO service_role;
 
@@ -4479,9 +4479,9 @@ ALTER TABLE public.user_gift_inventory
 ALTER TABLE public.user_gift_inventory
   ADD CONSTRAINT user_gift_inventory_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.user_gift_inventory TO anon;
+-- Removed overprivileged anon table grant on public.user_gift_inventory.
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.user_gift_inventory TO authenticated;
+-- Removed overprivileged authenticated table grant on public.user_gift_inventory.
 
 GRANT ALL ON public.user_gift_inventory TO service_role;
 
@@ -4518,9 +4518,9 @@ ALTER TABLE public.voice_call_minutes
 ALTER TABLE public.voice_call_minutes
   ADD CONSTRAINT voice_call_minutes_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.voice_call_minutes TO anon;
+-- Removed overprivileged anon table grant on public.voice_call_minutes.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.voice_call_minutes TO authenticated;
+GRANT SELECT ON public.voice_call_minutes TO authenticated;
 
 GRANT ALL ON public.voice_call_minutes TO service_role;
 
@@ -4568,9 +4568,9 @@ ALTER TABLE public.voice_call_turns
 ALTER TABLE public.voice_call_turns
   ADD CONSTRAINT voice_call_turns_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.voice_call_turns TO anon;
+-- Removed overprivileged anon table grant on public.voice_call_turns.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.voice_call_turns TO authenticated;
+GRANT SELECT ON public.voice_call_turns TO authenticated;
 
 GRANT ALL ON public.voice_call_turns TO service_role;
 
@@ -4615,9 +4615,9 @@ ALTER TABLE public.voice_calls
 ALTER TABLE public.voice_calls
   ADD CONSTRAINT voice_calls_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE;
 
-GRANT MAINTAIN, REFERENCES, TRIGGER, TRUNCATE ON public.voice_calls TO anon;
+-- Removed overprivileged anon table grant on public.voice_calls.
 
-GRANT MAINTAIN, REFERENCES, SELECT, TRIGGER, TRUNCATE ON public.voice_calls TO authenticated;
+GRANT SELECT ON public.voice_calls TO authenticated;
 
 GRANT ALL ON public.voice_calls TO service_role;
 
@@ -4630,7 +4630,4 @@ CREATE POLICY voice_calls_owner_read ON public.voice_calls
   FOR SELECT
   USING ((auth.uid() = user_id));
 
-CREATE EVENT TRIGGER ensure_rls
-  ON ddl_command_end
-  WHEN TAG IN ('CREATE TABLE', 'CREATE TABLE AS', 'SELECT INTO')
-  EXECUTE FUNCTION public.rls_auto_enable();
+-- Do not install a global event trigger on the managed Supabase database.

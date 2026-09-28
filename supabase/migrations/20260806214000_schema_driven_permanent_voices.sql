@@ -812,7 +812,7 @@ begin
     where feature_flags ->> 'voice_id' = required.required_voice
   );
 
-  if coalesce(array_length(v_missing_voices, 1), 0) > 0 then
+  if exists (select 1 from public.characters) and coalesce(array_length(v_missing_voices, 1), 0) > 0 then
     raise exception
       'VOICE_ASSIGNMENT_ABORTED: these selected voices were not used: %',
       array_to_string(v_missing_voices, ', ');

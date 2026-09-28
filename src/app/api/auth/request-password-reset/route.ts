@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import {
-  getSupabaseServiceClient
-} from "@/lib/supabase/server";
+import { assertIndependentSupabaseUrl } from "@/lib/supabase/project";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,6 +15,7 @@ function getPublicAuthClient() {
     throw new Error("Missing Supabase public auth variables.");
   }
 
+  assertIndependentSupabaseUrl(url);
   return createClient(url, anonKey, {
     auth: {
       autoRefreshToken: false,
@@ -26,16 +25,12 @@ function getPublicAuthClient() {
   });
 }
 
-function redirectBase(request: Request) {
-  const configured =
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "");
-
-  if (configured) return configured;
-
-  const origin = request.headers.get("origin");
-  if (origin) return origin.replace(/\/+$/, "");
-
-  return new URL(request.url).origin;
+function redirectBase() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "");
+  if (!siteUrl && process.env.NODE_ENV === "production") {
+    throw new Error("NEXT_PUBLIC_SITE_URL must be configured for production Auth.");
+  }
+  return siteUrl || "http://localhost:3000";
 }
 
 export async function POST(request: Request) {
@@ -53,35 +48,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const service = getSupabaseServiceClient();
-    const { data: accountExists, error: lookupError } =
-      await service.rpc(
-        "everbond_account_email_exists",
-        {
-          candidate_email: email
-        }
-      );
-
-    if (lookupError) throw lookupError;
-
-    if (accountExists !== true) {
-      return NextResponse.json(
-        { error: "ACCOUNT_NOT_FOUND" },
-        {
-          status: 404,
-          headers: {
-            "Cache-Control": "no-store"
-          }
-        }
-      );
-    }
-
     const { error: resetError } =
       await getPublicAuthClient().auth.resetPasswordForEmail(
         email,
         {
           redirectTo:
-            `${redirectBase(request)}/auth/reset-password`
+            `${redirectBase()}/auth/reset-password`
         }
       );
 
